@@ -16,6 +16,23 @@ public class FabriqueRessource {
      * @return Ressource créée en fonction de la lettre.
      */
     public static Ressource creer(Case position, Character lettre){
-        return Ressource;
+        Ressource res = null;
+
+        switch (lettre){
+            case 'T':
+                res = new RessourceArbre(position);
+                break;
+            case 'R':
+                res = new RessourceRocher(position);
+                break;
+            case 'I':
+                res = new RessourceFer(position);
+                break;
+            case 'G':
+                res = new RessourceOr(position);
+                break;
+        }
+
+        return res;
     }
 }
