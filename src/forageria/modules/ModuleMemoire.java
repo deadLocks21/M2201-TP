@@ -33,6 +33,7 @@ public class ModuleMemoire extends Module  {
      */
     public void genererCarte(String messageRecu){
         carte = new Carte(messageRecu);
+        carte.afficheConsole();
     }
 
     /**

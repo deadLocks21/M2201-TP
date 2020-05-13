@@ -25,8 +25,10 @@ public class ModuleDecision extends Module {
 
         if(!super.getIA().getModuleMemoire().hasCarte())
             messageAEnvoyer = "MAP";
-        else
+        else {
             messageAEnvoyer = "END";
+            this.getIA().arretDiscussion();
+        }
 
 
         return messageAEnvoyer;
