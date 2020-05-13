@@ -10,7 +10,7 @@ public class FabriqueRessource {
      * Méthode permettant de retourner une ressource en fonction de lettre.
      *
      *
-     * @param position  Position de la case à créer.
+     * @param position  Position de la ressource à créer.
      * @param lettre    Identifiant de la ressource à créer.
      *
      * @return Ressource créée en fonction de la lettre.
