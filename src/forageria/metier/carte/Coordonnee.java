@@ -80,6 +80,31 @@ public class Coordonnee {
         return c;
     }
 
+    /**
+     * Renvoie le mouvement à réaliser pour passer de la Coordonnee courante à la Coordonnee destination.
+     *
+     *
+     * @param destination Destination de là ou l'on veut se rendre
+     *
+     * @return
+     */
+    public TypeMouvement getMouvementPourAller(Coordonnee destination){
+        TypeMouvement mvt = null;
+        int dLigne = destination.getLigne() - ligne;
+        int dColonne = destination.getColonne() - colonne;
+
+        if(dLigne < 0 && dColonne == 0)
+            mvt = TypeMouvement.TOP;
+        if(dLigne == 0 && dColonne > 0)
+            mvt = TypeMouvement.RIGHT;
+        if(dLigne > 0 && dColonne == 0)
+            mvt = TypeMouvement.BOTTOM;
+        if(dLigne == 0 && dColonne < 0)
+            mvt = TypeMouvement.LEFT;
+
+        return mvt;
+    }
+
 
 
     @Override
