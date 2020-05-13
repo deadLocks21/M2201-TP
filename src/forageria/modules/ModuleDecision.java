@@ -30,6 +30,14 @@ public class ModuleDecision extends Module {
             this.getIA().arretDiscussion();
         }
 
+        // Vérification de l'évolution des coordonées de manière numérique.
+        /*if(messageRecu.equals("OK") || messageRecu.equals("START")){
+            messageAEnvoyer = "PLAYER";
+        } else {
+            messageAEnvoyer = "MOVE|RIGHT";
+            // messageAEnvoyer = "MOVE|TOP";
+        }*/
+
 
         return messageAEnvoyer;
     }

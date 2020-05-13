@@ -1,5 +1,7 @@
 package forageria.metier.carte;
 
+import forageria.metier.TypeMouvement;
+
 /**
  * Classe en charge de stocker les coordonnées d'un point.
  * Il correspond au point de jonction entre une ligne et une colonne de la carte.
@@ -48,6 +50,34 @@ public class Coordonnee {
      */
     public int getColonne() {
         return colonne;
+    }
+
+    /**
+     * Détermine les coordonnées du voisin demandé avec mouvement de notre case.
+     *
+     *
+     * @param mouvement  Mouvement souhaité.
+     * @return Coordonnées en fonction du mouvement souhaité.
+     */
+    public Coordonnee getVoisin(TypeMouvement mouvement){
+        Coordonnee c = null;
+
+        switch (mouvement){
+            case TOP:
+                c = new Coordonnee(ligne - 1, colonne);
+                break;
+            case RIGHT:
+                c = new Coordonnee(ligne, colonne + 1);
+                break;
+            case BOTTOM:
+                c = new Coordonnee(ligne + 1, colonne);
+                break;
+            case LEFT:
+                c = new Coordonnee(ligne, colonne - 1);
+                break;
+        }
+
+        return c;
     }
 
 
