@@ -58,4 +58,14 @@ public abstract class Case {
     public void setRessource(Ressource ressource) {
         this.ressource = ressource;
     }
+
+
+
+    /**
+     * Méthode permettant de connaitre le type de la case.
+     *
+     *
+     * @return Type de la case sous la forme de TypeCase.
+     */
+    public abstract TypeCase getType();
 }

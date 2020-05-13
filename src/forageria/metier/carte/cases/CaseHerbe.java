@@ -11,4 +11,9 @@ public class CaseHerbe extends Case {
     public CaseHerbe(Coordonnee coordonnee) {
         super(coordonnee);
     }
+
+    @Override
+    public TypeCase getType() {
+        return TypeCase.HERBE;
+    }
 }
