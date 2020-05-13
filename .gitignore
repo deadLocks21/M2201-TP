@@ -6,3 +6,5 @@ out/production/M2201 - TP/M2201/TP/Client.class
 out/production/M2201 - TP/M2201/TP/Main.class
 /build/
 /dist/
+*.class
+out/production/M2201 - TP/META-INF/M2201 - TP.kotlin_module
