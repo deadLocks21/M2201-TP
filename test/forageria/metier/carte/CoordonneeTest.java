@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forageria.metier;
+package forageria.metier.carte;
 
+import forageria.metier.TypeMouvement;
 import static forageria.metier.TypeMouvement.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
