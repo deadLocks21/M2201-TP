@@ -22,24 +22,12 @@ public class ModuleDecision extends Module {
     public String determinerNouvelleAction(String messageRecu) {
         String messageAEnvoyer = "END";
 
-        Random rand = new Random();
-        int where = rand.nextInt(4) + 1;  // Génère un nombre aléatoire entre 1 et 4
 
-        // En fonction de where, change la direction.
-        switch (where){
-            case 1:
-                messageAEnvoyer = "MOVE|TOP";
-                break;
-            case 2:
-                messageAEnvoyer = "MOVE|LEFT";
-                break;
-            case 3:
-                messageAEnvoyer = "MOVE|BOTTOM";
-                break;
-            case 4:
-                messageAEnvoyer = "MOVE|RIGHT";
-                break;
-        }
+        if(!super.getIA().getModuleMemoire().hasCarte())
+            messageAEnvoyer = "MAP";
+        else
+            messageAEnvoyer = "END";
+
 
         return messageAEnvoyer;
     }
