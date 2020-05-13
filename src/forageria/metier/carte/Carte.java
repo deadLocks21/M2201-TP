@@ -26,8 +26,16 @@ public class Carte {
      *
      * @param messageRecu Message recu par l'IA.
      */
-    public Carte(String messageRecu){
-        cases = new HashMap<>();
+    public Carte(String messageRecu) {
+        this.cases = new HashMap<>() ;
+        this.taille = (int) Math.sqrt(messageRecu.length()) ;
+
+        for(int i=0 ;i<this.taille ;i++) {
+            for(int j=0 ;j<this.taille ;j++) {
+                this.ajouterCase(new Coordonnee(i,j), messageRecu.charAt
+                        (j+this.taille*i)) ;
+            }
+        }
     }
 
 
