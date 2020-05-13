@@ -23,17 +23,11 @@ public class FabriqueCase {
             case 'W':
                 c = new CaseEau(coordonnee);
                 break;
-            case 'H':
+            default :
                 c = new CaseHerbe(coordonnee);
-                break;
-            case 'T':
-            case 'R':
-            case 'I':
-            case 'G':
-                c = new CaseHerbe(coordonnee);
-                c.setRessource(FabriqueRessource.creer(c, lettre));
                 break;
         }
+        c.setRessource(FabriqueRessource.creer(c,lettre));
 
         return c;
     }
