@@ -28,6 +28,35 @@ public class Coordonnee {
         this.colonne = aColonne;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + this.ligne;
+        hash = 97 * hash + this.colonne;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Coordonnee other = (Coordonnee) obj;
+        if (this.ligne != other.ligne) {
+            return false;
+        }
+        if (this.colonne != other.colonne) {
+            return false;
+        }
+        return true;
+    }
+
 
 
     /**
