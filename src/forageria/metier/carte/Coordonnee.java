@@ -20,13 +20,37 @@ public class Coordonnee {
      * Constructeur de la classe Coordonnées.
      *
      *
-     * @param aLigne    Ligne de nos co.
-     * @param aColonne  Colonne de nos co.
+     * @param ligne    Ligne de nos co.
+     * @param colonne  Colonne de nos co.
      */
-    public Coordonnee(int aLigne, int aColonne){
-        this.ligne = aLigne;
-        this.colonne = aColonne;
+    public Coordonnee(int ligne, int colonne){
+        this.ligne = ligne;
+        this.colonne = colonne;
     }
+
+
+
+    /**
+     * Assesseur de la variable ligne
+     *
+     *
+     * @return Numéro correspondant à la ligne.
+     */
+    public int getLigne() {
+        return ligne;
+    }
+
+    /**
+     * Assesseur de la variable colonne.
+     *
+     *
+     * @return Numéro correspondant à la colonne.
+     */
+    public int getColonne() {
+        return colonne;
+    }
+
+
 
     @Override
     public int hashCode() {
@@ -55,27 +79,5 @@ public class Coordonnee {
             return false;
         }
         return true;
-    }
-
-
-
-    /**
-     * Assesseur de la variable ligne
-     *
-     *
-     * @return Numéro correspondant à la ligne.
-     */
-    public int getLigne() {
-        return ligne;
-    }
-
-    /**
-     * Assesseur de la variable colonne.
-     *
-     *
-     * @return Numéro correspondant à la colonne.
-     */
-    public int getColonne() {
-        return colonne;
     }
 }
