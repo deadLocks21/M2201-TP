@@ -18,7 +18,21 @@ public class ModuleReaction extends Module {
      * @param messageRecu dernier message reçu du serveur
      */
     public void reagirAuMessageRecu(String messageEnvoye, String messageRecu) {
-        
+        switch(messageEnvoye) {
+            case "MAP" :
+                reactionCarte(messageRecu) ;
+                break ;
+        }
+    }
+
+    /**
+     * Réaction si on a demandé la carte
+     *
+     *
+     * @param messageRecu Message recu contenant la carte.
+     */
+    public void reactionCarte(String messageRecu) {
+        this.getIA().getModuleMemoire().genererCarte(messageRecu) ;
     }
 
 }
