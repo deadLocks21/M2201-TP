@@ -22,6 +22,9 @@ public class ModuleReaction extends Module {
             case "MAP" :
                 reactionCarte(messageRecu) ;
                 break ;
+            case "PLAYER" :
+                reactionJoueur(messageRecu); ;
+                break ;
         }
     }
 
@@ -33,6 +36,10 @@ public class ModuleReaction extends Module {
      */
     public void reactionCarte(String messageRecu) {
         this.getIA().getModuleMemoire().genererCarte(messageRecu) ;
+    }
+
+    public void reactionJoueur(String messageRecu){
+        this.getIA().getModuleMemoire().genererJoueur(messageRecu);
     }
 
 }
