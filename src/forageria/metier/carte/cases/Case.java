@@ -68,7 +68,25 @@ public abstract class Case {
         this.ressource = ressource;
     }
 
-    
+    /**
+     * Assesseur de la variable voisins.
+     *
+     *
+     * @return Variable voisins sour la forme d'une ArrayList
+     */
+    public ArrayList<Case> getVoisins() {
+        return voisins;
+    }
+
+    /**
+     * Permet d'ajouter un voisin à la liste des voisins.
+     *
+     *
+     * @param voisin Case à ajouter à la liste.
+     */
+    public void ajouterVoisin(Case voisin){
+        voisins.add(voisin);
+    }
 
 
 
