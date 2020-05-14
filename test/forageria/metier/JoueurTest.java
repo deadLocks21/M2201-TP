@@ -5,6 +5,7 @@
  */
 package forageria.metier;
 
+import forageria.metier.carte.Coordonnee;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
