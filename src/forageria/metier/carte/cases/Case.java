@@ -3,6 +3,8 @@ package forageria.metier.carte.cases;
 import forageria.metier.carte.Coordonnee;
 import forageria.metier.carte.ressources.Ressource;
 
+import java.util.ArrayList;
+
 /**
  * Classe abstraite en charge de stocker une case.
  */
@@ -18,6 +20,12 @@ public abstract class Case {
 
 
     /**
+     * Attribut permettant de trouver les voisins de la case.
+     */
+    private ArrayList<Case> voisins;
+
+
+    /**
      * Permet d'initialiser une case.
      *
      *
@@ -25,6 +33,7 @@ public abstract class Case {
      */
     public Case(Coordonnee coordonnee){
         this.coordonnee = coordonnee;
+        this.voisins = new ArrayList<>();
     }
 
 
@@ -58,6 +67,8 @@ public abstract class Case {
     public void setRessource(Ressource ressource) {
         this.ressource = ressource;
     }
+
+    
 
 
 

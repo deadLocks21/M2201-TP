@@ -17,6 +17,7 @@ public class IA {
     private ModuleDecision moduleDecision;                                     //Module en charge de la prise de décisions
     private ModuleMemoire moduleMemoire;                                       //Module en charge de la mémorisation des informations
     private ModuleReaction moduleReaction;                                     //Module en charge de la réaction de l'IA à un message du serveur
+
     private boolean isDiscussionTerminee;                                       //La discussion avec le serveur est-elle terminée
     private String messageEnvoye;                                               //Dernier message envoyé au serveur (ou devant être envoyé)
     private String messageRecu;                                                 //Dernier message reçu du serveur
