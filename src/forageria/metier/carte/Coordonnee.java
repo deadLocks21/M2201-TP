@@ -86,7 +86,7 @@ public class Coordonnee {
      *
      * @param destination Destination de là ou l'on veut se rendre
      *
-     * @return
+     * @return Mouvement pour effectuer le déplacement.
      */
     public TypeMouvement getMouvementPourAller(Coordonnee destination){
         TypeMouvement mvt = null;
