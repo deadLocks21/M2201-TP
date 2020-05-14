@@ -78,7 +78,7 @@ public class ModuleMemoire extends Module  {
     public void genererJoueur(String messageRecu){
         String[] coo = messageRecu.split("/");
 
-        Coordonnee cooJoueur = new Coordonnee(Integer.parseInt(coo[0]), Integer.parseInt(coo[1]));
+        Coordonnee cooJoueur = new Coordonnee(Integer.parseInt(coo[1]), Integer.parseInt(coo[0]));
         joueur = new Joueur(cooJoueur);
     }
 
