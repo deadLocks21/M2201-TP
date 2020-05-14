@@ -135,4 +135,9 @@ public class Coordonnee {
         }
         return true;
     }
+
+    @Override
+    public String toString(){
+        return "(" + this.colonne + ", " + this.ligne + ")";
+    }
 }
