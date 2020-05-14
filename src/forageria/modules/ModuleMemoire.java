@@ -3,6 +3,7 @@ package forageria.modules;
 import forageria.IA;
 import forageria.metier.Joueur;
 import forageria.metier.carte.Carte;
+import forageria.metier.carte.Coordonnee;
 
 /**
  * Module en charge de la mémorisation et de la restitution des informations obtenues
@@ -31,6 +32,27 @@ public class ModuleMemoire extends Module  {
 
 
     /**
+     * Assesseur de la variable joueur.
+     *
+     *
+     * @return Joueur
+     */
+    public Joueur getJoueur(){
+        return joueur;
+    }
+
+
+    /**
+     * Vaut TRUE si la carte est settée.
+     *
+     *
+     * @return TRUE | FALSE
+     */
+    public boolean hasCarte(){
+        return carte != null;
+    }
+
+    /**
      * Permet de génerer la carte avec le message recu.
      *
      *
@@ -44,13 +66,20 @@ public class ModuleMemoire extends Module  {
     }
 
     /**
-     * Vaut TRUE si la carte est settée.
+     * Vaut TRUE si le joueur est settée.
      *
      *
      * @return TRUE | FALSE
      */
-    public boolean hasCarte(){
-        return carte != null;
+    public boolean hasJoueur(){
+        return joueur != null;
+    }
+
+    public void genererJoueur(String messageRecu){
+        String[] coo = messageRecu.split("/");
+
+        Coordonnee cooJoueur = new Coordonnee(Integer.parseInt(coo[0]), Integer.parseInt(coo[1]));
+        joueur = new Joueur(cooJoueur);
     }
 
 }
