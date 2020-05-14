@@ -22,9 +22,10 @@ public class ModuleDecision extends Module {
     public String determinerNouvelleAction(String messageRecu) {
         String messageAEnvoyer = "END";
 
-
         if(!super.getIA().getModuleMemoire().hasCarte())
             messageAEnvoyer = "MAP";
+        else if (!super.getIA().getModuleMemoire().hasJoueur())
+            messageAEnvoyer = "PLAYER";
         else {
             messageAEnvoyer = "END";
             this.getIA().arretDiscussion();
