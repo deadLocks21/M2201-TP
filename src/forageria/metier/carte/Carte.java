@@ -1,5 +1,6 @@
 package forageria.metier.carte;
 
+import forageria.metier.TypeMouvement;
 import forageria.metier.carte.cases.Case;
 import forageria.metier.carte.cases.FabriqueCase;
 
@@ -33,10 +34,25 @@ public class Carte {
         this.cases = new HashMap<>() ;
         this.taille = (int) Math.sqrt(messageRecu.length()) ;
 
+        // Ajout des cases à la carte
         for(int i=0 ;i<this.taille ;i++) {
             for(int j=0 ;j<this.taille ;j++) {
                 this.ajouterCase(new Coordonnee(i,j), messageRecu.charAt
                         (j+this.taille*i)) ;
+            }
+        }
+
+        //Gestions des voisins
+        for(int i=0 ;i<this.taille ;i++) {
+            for(int j=0 ;j<this.taille ;j++) {
+                Coordonnee cooCase = new Coordonnee(i,j) ;
+                for(TypeMouvement mouvement : TypeMouvement.values()) {
+                    Coordonnee cooVoisin = cooCase.getVoisin(mouvement) ;
+                    if(this.cases.get(cooVoisin) != null) {
+                        this.cases.get(cooCase).ajouterVoisin(this.cases.get(
+                                cooVoisin)) ;
+                    }
+                }
             }
         }
     }
