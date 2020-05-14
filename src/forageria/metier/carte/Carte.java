@@ -2,9 +2,12 @@ package forageria.metier.carte;
 
 import forageria.metier.TypeMouvement;
 import forageria.metier.carte.cases.Case;
+import forageria.metier.carte.cases.CaseHerbe;
 import forageria.metier.carte.cases.FabriqueCase;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,12 +52,30 @@ public class Carte {
                 for(TypeMouvement mouvement : TypeMouvement.values()) {
                     Coordonnee cooVoisin = cooCase.getVoisin(mouvement) ;
                     if(this.cases.get(cooVoisin) != null) {
-                        this.cases.get(cooCase).ajouterVoisin(this.cases.get(
-                                cooVoisin)) ;
+                        this.cases.get(cooCase).ajouterVoisin(this.cases.get(cooVoisin)) ;
                     }
                 }
             }
         }
+
+        // Affichage des voisins
+        /*Case c1 = this.cases.get(new Coordonnee(0, 0));
+        Case c2 = this.cases.get(new Coordonnee(3, 3));
+        Case c3 = this.cases.get(new Coordonnee(6, 4));
+        ArrayList<Case> testCo = new ArrayList<>(Arrays.asList(c1, c2, c3));
+
+        for(Case c : testCo){
+            System.out.println("Case : " + c.getCoordonnee());
+            ArrayList<Case> voisins = c.getVoisins();
+
+            for(Case caseVoisin  : voisins){
+                System.out.println("    -> " + caseVoisin.getCoordonnee());
+            }
+        }*/
+
+
+
+
     }
 
 
