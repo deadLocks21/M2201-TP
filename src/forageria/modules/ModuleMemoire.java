@@ -1,6 +1,7 @@
 package forageria.modules;
 
 import forageria.IA;
+import forageria.metier.Joueur;
 import forageria.metier.carte.Carte;
 
 /**
@@ -12,6 +13,10 @@ public class ModuleMemoire extends Module  {
      * Stocke la carte du jeu.
      */
     Carte carte;
+    /**
+     * Stocke notre joueur.
+     */
+    Joueur joueur;
 
 
     /**
