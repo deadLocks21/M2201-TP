@@ -89,6 +89,17 @@ public abstract class Case {
     }
 
 
+    /**
+     * Permet de savoir si la case est vide ou non.
+     * Vaut TRUE si elle n'a pas de ressource.
+     *
+     *
+     * @return TRUE | FALSE
+     */
+    public boolean estVide(){
+        return ressource == null;
+    }
+
 
     /**
      * Méthode permettant de connaitre le type de la case.
