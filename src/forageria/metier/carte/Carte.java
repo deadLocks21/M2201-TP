@@ -129,4 +129,16 @@ public class Carte {
             System.out.println("") ;
         }
     }
+
+    /**
+     * Permet de récupérer la case avec les coo coordonee.
+     *
+     *
+     * @param coordonnee Place de la case à récupérer.
+     *
+     * @return Case en question.
+     */
+    public Case getCase(Coordonnee coordonnee){
+        return cases.get(coordonnee);
+    }
 }
