@@ -110,7 +110,7 @@ public abstract class Case {
      * @return Mouvement à effectuer.
      */
     public TypeMouvement getMouvementPourAller(Case arrivee){
-        return null;
+        return coordonnee.getMouvementPourAller(arrivee.getCoordonnee());
     }
 
 
