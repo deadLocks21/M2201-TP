@@ -3,6 +3,8 @@ package forageria.metier.algorithmes;
 import forageria.metier.carte.Carte;
 import forageria.metier.carte.cases.Case;
 
+import java.util.ArrayList;
+
 public class ParcoursLargeur extends AlgorithmeCalculDistance {
     /**
      * Constructur de la classe.
@@ -15,6 +17,28 @@ public class ParcoursLargeur extends AlgorithmeCalculDistance {
 
     @Override
     public void calculerDistancesDepuis(Case depart) {
+        // RAZ
+        ArrayList<Case> aTraiter = new ArrayList<Case>();
+        super.reinitialisationDistances();
 
+        // Initialisation
+        aTraiter.add(depart);
+        super.setDistances(depart, 0);
+        Case caseEnCours;
+
+        // Calcul
+        while (aTraiter.size() > 0){
+            caseEnCours = aTraiter.get(0);
+            aTraiter.remove(caseEnCours);
+
+            for (Case v : caseEnCours.getVoisins()){
+                if (getDistance(v) == null){
+                    if (v.estAccessible()){
+                        setDistances(v, getDistance(caseEnCours) + 1);
+                        aTraiter.add(v);
+                    }
+                }
+            }
+        }
     }
 }
