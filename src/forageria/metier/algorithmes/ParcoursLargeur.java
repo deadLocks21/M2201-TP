@@ -53,7 +53,7 @@ public class ParcoursLargeur extends AlgorithmeCalculDistance {
 
         // Calcul
         if(caseEnCours != null){
-            while(getDistance(caseEnCours) > 0){
+            while(getDistance(caseEnCours) > 0){  // Boucle non infini, car si aucun voisin n'est utilisable, alors caseEncours = null et n'a pas de sistance.
                 ArrayList<Case> voisins = caseEnCours.getVoisins();
                 casePrecedente = null;
 
