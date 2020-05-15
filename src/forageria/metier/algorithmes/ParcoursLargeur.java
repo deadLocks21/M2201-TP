@@ -10,10 +10,13 @@ import java.util.Collections;
 /**
  * Algorithme de parcours en largeur.
  *
- * Limites:
+ * Limites :
  *     - Ne prend pas en compte les ressources sur lesquels on ne peut pas passer
  *     - Détermine le plus court chemin en nombre de case.
  *         -> caser un élement peut parfois optimiser la distance à parcourir.
+ *
+ * Correction :
+ *     - Nouvel algo plus complexe pour prendre en compte ces défauts.
  */
 public class ParcoursLargeur extends AlgorithmeCalculDistance {
     /**
