@@ -1,5 +1,6 @@
 package forageria.metier.carte.cases;
 
+import forageria.metier.TypeMouvement;
 import forageria.metier.carte.Coordonnee;
 import forageria.metier.carte.ressources.Ressource;
 
@@ -98,6 +99,18 @@ public abstract class Case {
      */
     public boolean estVide(){
         return ressource == null;
+    }
+
+    /**
+     * Retourne le mouvement pour aller à une case voisine.
+     *
+     *
+     * @param arrivee Case ou l'on veut aller.
+     *
+     * @return Mouvement à effectuer.
+     */
+    public TypeMouvement getMouvementPourAller(Case arrivee){
+        return null;
     }
 
 
