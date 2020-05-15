@@ -16,4 +16,9 @@ public class CaseHerbe extends Case {
     public TypeCase getType() {
         return TypeCase.HERBE;
     }
+
+    @Override
+    public boolean estAccessible() {
+        return super.estVide();
+    }
 }

@@ -16,4 +16,9 @@ public class CaseEau extends Case {
     public TypeCase getType() {
         return TypeCase.EAU;
     }
+
+    @Override
+    public boolean estAccessible() {
+        return false;
+    }
 }

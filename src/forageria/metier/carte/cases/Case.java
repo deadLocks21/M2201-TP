@@ -108,4 +108,12 @@ public abstract class Case {
      * @return Type de la case sous la forme de TypeCase.
      */
     public abstract TypeCase getType();
+
+    /**
+     * Renvoie TRUE si on se trouve sur une CaseHerbe vide.
+     *
+     *
+     * @return TRUE|FALSE
+     */
+    public abstract boolean estAccessible();
 }
