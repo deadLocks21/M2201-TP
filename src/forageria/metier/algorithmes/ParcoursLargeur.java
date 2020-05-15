@@ -1,9 +1,11 @@
 package forageria.metier.algorithmes;
 
+import forageria.metier.TypeMouvement;
 import forageria.metier.carte.Carte;
 import forageria.metier.carte.cases.Case;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ParcoursLargeur extends AlgorithmeCalculDistance {
     /**
@@ -40,5 +42,33 @@ public class ParcoursLargeur extends AlgorithmeCalculDistance {
                 }
             }
         }
+    }
+
+    @Override
+    public ArrayList<TypeMouvement> getChemin(Case arrivee) {
+        // Initialisation
+        ArrayList<TypeMouvement> resultat = new ArrayList<>();
+        Case caseEnCours = arrivee;
+        Case casePrecedente;
+
+        // Calcul
+        if(caseEnCours != null){
+            while(getDistance(caseEnCours) > 0){
+                ArrayList<Case> voisins = caseEnCours.getVoisins();
+                casePrecedente = null;
+
+                for(Case v : voisins){
+                    if( (getDistance(v) != null) && (getDistance(v) == getDistance(caseEnCours) - 1))
+                        casePrecedente = v;
+                }
+
+                resultat.add(casePrecedente.getMouvementPourAller(caseEnCours));
+
+                caseEnCours = casePrecedente;
+            }
+        }
+
+        Collections.reverse(resultat);
+        return resultat;
     }
 }
