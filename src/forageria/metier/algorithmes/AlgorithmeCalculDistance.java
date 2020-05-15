@@ -1,8 +1,11 @@
 package forageria.metier.algorithmes;
 
+import forageria.metier.TypeMouvement;
 import forageria.metier.carte.Carte;
 import forageria.metier.carte.cases.Case;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -79,4 +82,14 @@ public abstract class AlgorithmeCalculDistance {
      * @param depart Case de départ.
      */
     public abstract void calculerDistancesDepuis(Case depart);
+
+    /**
+     * Méthode permettant de trouver le chemin pour aller à une case accessible.
+     *
+     *
+     * @param arrivee Case ou l'on veut se rendre.
+     *
+     * @return Suite d'instruction pour y aller.
+     */
+    public abstract ArrayList<TypeMouvement> getChemin(Case arrivee);
 }
