@@ -27,6 +27,7 @@ public abstract class AlgorithmeCalculDistance {
      */
     public AlgorithmeCalculDistance(Carte carte){
         this.carte = carte;
+        distances = new HashMap<Case, Integer>();
     }
 
 
