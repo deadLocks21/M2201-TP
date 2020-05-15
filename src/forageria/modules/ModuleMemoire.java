@@ -41,6 +41,16 @@ public class ModuleMemoire extends Module  {
         return joueur;
     }
 
+    /**
+     * Assesseur de la variable carte.
+     *
+     *
+     * @return Variable carte.
+     */
+    public Carte getCarte(){
+        return carte;
+    }
+
 
     /**
      * Vaut TRUE si la carte est settée.
