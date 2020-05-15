@@ -7,6 +7,14 @@ import forageria.metier.carte.cases.Case;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Algorithme de parcours en largeur.
+ *
+ * Limites:
+ *     - Ne prend pas en compte les ressources sur lesquels on ne peut pas passer
+ *     - Détermine le plus court chemin en nombre de case.
+ *         -> caser un élement peut parfois optimiser la distance à parcourir.
+ */
 public class ParcoursLargeur extends AlgorithmeCalculDistance {
     /**
      * Constructur de la classe.
