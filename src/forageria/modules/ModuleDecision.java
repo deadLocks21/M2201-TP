@@ -3,6 +3,7 @@ package forageria.modules;
 import forageria.IA;
 import forageria.metier.actions.Action;
 import forageria.metier.actions.FabriqueAction;
+import forageria.metier.carte.Coordonnee;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -70,5 +71,15 @@ public class ModuleDecision extends Module {
      * Méthode permettant de déterminer les nouvelles actions.
      */
     private void determinerNouvellesActions(){
+    }
+
+    /**
+     * Permet de déplacer le joueur jusqu'à des coo.
+     *
+     *
+     * @param coordonnee Coo ou l'on veut déplacer le joueur.
+     */
+    private void seDeplacerEn(Coordonnee coordonnee){
+
     }
 }
