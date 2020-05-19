@@ -7,11 +7,11 @@ import forageria.IA;
  * @author Matthieu
  */
 public class ModuleReaction extends Module {
-
     public ModuleReaction(IA ia) {
         super(ia);
     }
-    
+
+
     /**
      * Méthode principale de réaction à un message du serveur
      * @param messageEnvoye dernier message envoyé au serveur

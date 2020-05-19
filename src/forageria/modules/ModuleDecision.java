@@ -29,6 +29,7 @@ public class ModuleDecision extends Module {
      */
     public ModuleDecision(IA ia) {
         super(ia);
+        listeDesActionsARealiser = new ArrayList<Action>();
     }
 
 
@@ -43,15 +44,11 @@ public class ModuleDecision extends Module {
     public String determinerNouvelleAction(String messageRecu) {
         String messageReponse = "END";
 
-        //Gestion de la carte
-        if(!super.getIA().getModuleMemoire().hasCarte())
+        //Gestion de la carte et du joueur
+        if(!super.getIA().getModuleMemoire().hasCarte()) {
             listeDesActionsARealiser.add(FabriqueAction.creerDemande(CARTE));
-
-
-        //Gestion du joueur
-        if (!super.getIA().getModuleMemoire().hasJoueur())
             listeDesActionsARealiser.add(FabriqueAction.creerDemande(JOUEUR));
-
+        }
 
         //Détermine de nouvelles actions si besoin
         if (listeDesActionsARealiser.size() == 0)

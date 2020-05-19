@@ -31,10 +31,10 @@ public class FabriqueAction {
 
         switch (demande){
             case JOUEUR:
-                actionDemande = new ActionDemande("JOUEUR");
+                actionDemande = new ActionDemande("PLAYER");
                 break;
             case CARTE:
-                actionDemande = new ActionDemande("CARTE");
+                actionDemande = new ActionDemande("MAP");
                 break;
         }
 
