@@ -92,5 +92,22 @@ public class ModuleDecision extends Module {
      * @param coordonnee Coo ou l'on veut déplacer le joueur.
      */
     private void seDeplacerEn(Coordonnee coordonnee){
+        System.out.println("--- Je veux aller en " + coordonnee + " ---");
+
+        Carte carte = getIA().getModuleMemoire().getCarte();
+
+        ParcoursLargeur parcoursLargeur = new ParcoursLargeur(carte);
+
+        Case caseJoueur = getIA().getModuleMemoire().getCaseJoueur();
+        parcoursLargeur.calculerDistancesDepuis(caseJoueur);
+
+        Case caseDestination = carte.getCase(coordonnee);
+        ArrayList<TypeMouvement> chemin = parcoursLargeur.getChemin(caseDestination);
+
+        for(TypeMouvement mvt : chemin){
+            Action action = FabriqueAction.creerMouvement(mvt);
+            listeDesActionsARealiser.add(action);
+        }
+
     }
 }
