@@ -85,6 +85,12 @@ public class ModuleMemoire extends Module  {
         return joueur != null;
     }
 
+    /**
+     * Permet de créer un joueur avec les coordonnées fourni par le serveur.
+     *
+     *
+     * @param messageRecu Coo sous forme de String 99/99
+     */
     public void genererJoueur(String messageRecu){
         String[] coo = messageRecu.split("/");
 
