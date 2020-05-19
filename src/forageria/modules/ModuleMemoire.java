@@ -98,4 +98,13 @@ public class ModuleMemoire extends Module  {
         joueur = new Joueur(cooJoueur);
     }
 
+    /**
+     * Permet de retourner les coordonnées du joueur.
+     *
+     *
+     * @return Coo du joueur.
+     */
+    public Coordonnee getCaseJoueur(){
+        return joueur.getCoordonnee();
+    }
 }
