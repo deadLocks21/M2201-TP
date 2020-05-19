@@ -2,9 +2,13 @@ package forageria.modules;
 
 import forageria.IA;
 import forageria.metier.actions.Action;
+import forageria.metier.actions.FabriqueAction;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import static forageria.metier.actions.TypeDemande.CARTE;
+import static forageria.metier.actions.TypeDemande.JOUEUR;
 
 /**
  * Module en charge de la prise de décision
@@ -30,37 +34,44 @@ public class ModuleDecision extends Module {
 
     /**
      * Méthode principale de prise de décision
+     *
+     *
      * @param messageRecu dernier message reçu du serveur
+     *
      * @return Le prochain message à envoyer
      */
     public String determinerNouvelleAction(String messageRecu) {
-        String messageAEnvoyer = "END";
+        String messageReponse = "END";
 
+        //Gestion de la carte
         if(!super.getIA().getModuleMemoire().hasCarte())
-            messageAEnvoyer = "MAP";
-        else if (!super.getIA().getModuleMemoire().hasJoueur())
-            messageAEnvoyer = "PLAYER";
-        else {
-            messageAEnvoyer = "END";
-            this.getIA().arretDiscussion();
+            listeDesActionsARealiser.add(FabriqueAction.creerDemande(CARTE));
+
+
+        //Gestion du joueur
+        if (!super.getIA().getModuleMemoire().hasJoueur())
+            listeDesActionsARealiser.add(FabriqueAction.creerDemande(JOUEUR));
+
+
+        //Détermine de nouvelles actions si besoin
+        if (listeDesActionsARealiser.size() == 0)
+            determinerNouvellesActions();
+
+        //Réalisation de la première action de la liste
+        if (listeDesActionsARealiser.size() != 0) {
+            messageReponse = listeDesActionsARealiser.get(0).getMessage();
+            listeDesActionsARealiser.remove(0);
+        } else {
+            messageReponse = "WAIT";
         }
 
-        // Vérification de l'évolution des coordonées de manière numérique.
-        /*if(messageRecu.equals("OK") || messageRecu.equals("START")){
-            messageAEnvoyer = "PLAYER";
-        } else {
-            messageAEnvoyer = "MOVE|RIGHT";
-            // messageAEnvoyer = "MOVE|TOP";
-        }*/
 
-
-        return messageAEnvoyer;
+        return messageReponse;
     }
 
     /**
      * Méthode permettant de déterminer les nouvelles actions.
      */
     private void determinerNouvellesActions(){
-
     }
 }
