@@ -27,7 +27,7 @@ public class ModuleDecision extends Module {
         super(ia);
     }
 
-    
+
     /**
      * Méthode principale de prise de décision
      * @param messageRecu dernier message reçu du serveur
@@ -55,5 +55,12 @@ public class ModuleDecision extends Module {
 
 
         return messageAEnvoyer;
+    }
+
+    /**
+     * Méthode permettant de déterminer les nouvelles actions.
+     */
+    private void determinerNouvellesActions(){
+
     }
 }
