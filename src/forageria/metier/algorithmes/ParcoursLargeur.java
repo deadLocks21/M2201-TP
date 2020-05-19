@@ -47,7 +47,7 @@ public class ParcoursLargeur extends AlgorithmeCalculDistance {
             for (Case v : caseEnCours.getVoisins()){
                 if (getDistance(v) == null){
                     if (v.estAccessible()){
-                        setDistances(v, getDistance(caseEnCours) + 1);
+                        super.setDistances(v, getDistance(caseEnCours) + 1);
                         aTraiter.add(v);
                     }
                 }
