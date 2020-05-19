@@ -1,7 +1,9 @@
 package forageria.modules;
 
 import forageria.IA;
+import forageria.metier.actions.Action;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -9,11 +11,23 @@ import java.util.Random;
  * @author Matthieu
  */
 public class ModuleDecision extends Module {
+    /**
+     * Liste des actions à effectuer.
+     */
+    public ArrayList<Action> listeDesActionsARealiser ;
 
+
+    /**
+     * Constructeur du module de décision.
+     *
+     *
+     * @param ia IA qui a créé le module.
+     */
     public ModuleDecision(IA ia) {
         super(ia);
     }
 
+    
     /**
      * Méthode principale de prise de décision
      * @param messageRecu dernier message reçu du serveur
