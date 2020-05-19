@@ -1,9 +1,13 @@
 package forageria.modules;
 
 import forageria.IA;
+import forageria.metier.TypeMouvement;
 import forageria.metier.actions.Action;
 import forageria.metier.actions.FabriqueAction;
+import forageria.metier.algorithmes.ParcoursLargeur;
+import forageria.metier.carte.Carte;
 import forageria.metier.carte.Coordonnee;
+import forageria.metier.carte.cases.Case;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -71,6 +75,14 @@ public class ModuleDecision extends Module {
      * Méthode permettant de déterminer les nouvelles actions.
      */
     private void determinerNouvellesActions(){
+        Random rand = new Random();
+
+        Coordonnee coo = new Coordonnee(
+                rand.nextInt(getIA().getModuleMemoire().getCarte().getTaille()),
+                rand.nextInt(getIA().getModuleMemoire().getCarte().getTaille())
+        );
+
+        seDeplacerEn(coo);
     }
 
     /**
@@ -80,6 +92,5 @@ public class ModuleDecision extends Module {
      * @param coordonnee Coo ou l'on veut déplacer le joueur.
      */
     private void seDeplacerEn(Coordonnee coordonnee){
-
     }
 }

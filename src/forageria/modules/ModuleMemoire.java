@@ -4,6 +4,7 @@ import forageria.IA;
 import forageria.metier.Joueur;
 import forageria.metier.carte.Carte;
 import forageria.metier.carte.Coordonnee;
+import forageria.metier.carte.cases.Case;
 
 /**
  * Module en charge de la mémorisation et de la restitution des informations obtenues
@@ -104,7 +105,7 @@ public class ModuleMemoire extends Module  {
      *
      * @return Coo du joueur.
      */
-    public Coordonnee getCaseJoueur(){
-        return joueur.getCoordonnee();
+    public Case getCaseJoueur(){
+        return carte.getCase(joueur.getCoordonnee());
     }
 }
