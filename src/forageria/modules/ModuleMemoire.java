@@ -2,6 +2,8 @@ package forageria.modules;
 
 import forageria.IA;
 import forageria.metier.Joueur;
+import forageria.metier.actions.Action;
+import forageria.metier.actions.TypeAction;
 import forageria.metier.carte.Carte;
 import forageria.metier.carte.Coordonnee;
 import forageria.metier.carte.cases.Case;
@@ -107,5 +109,16 @@ public class ModuleMemoire extends Module  {
      */
     public Case getCaseJoueur(){
         return carte.getCase(joueur.getCoordonnee());
+    }
+
+    /**
+     * Si on déplace le joueur, met à jour sa position.
+     *
+     *
+     * @param action Action que l'on effectue.
+     */
+    public void effectuerAction(Action action){
+        if (action.getType() == TypeAction.MOUVEMENT)
+            joueur.deplacer(action.getDirection());
     }
 }
