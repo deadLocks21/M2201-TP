@@ -62,6 +62,7 @@ public class ModuleDecision extends Module {
         //Réalisation de la première action de la liste
         if (listeDesActionsARealiser.size() != 0) {
             messageReponse = listeDesActionsARealiser.get(0).getMessage();
+            getIA().getModuleMemoire().effectuerAction(listeDesActionsARealiser.get(0));
             listeDesActionsARealiser.remove(0);
         } else {
             messageReponse = "WAIT";
