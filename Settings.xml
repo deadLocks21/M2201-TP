@@ -3,7 +3,7 @@
   <SizeOfTheMap>50</SizeOfTheMap>
   <SeedOfTheMap>0</SeedOfTheMap>
   <AIControled>true</AIControled>
-  <QuantityOfRessources>0</QuantityOfRessources>
+  <QuantityOfRessources>0.4</QuantityOfRessources>
   <WeightTree>8</WeightTree>
   <WeightRock>4</WeightRock>
   <WeightIron>1</WeightIron>

@@ -8,6 +8,8 @@ import forageria.metier.algorithmes.ParcoursLargeur;
 import forageria.metier.carte.Carte;
 import forageria.metier.carte.Coordonnee;
 import forageria.metier.carte.cases.Case;
+import forageria.metier.carte.cases.FabriqueCase;
+import forageria.metier.carte.cases.TypeCase;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -77,11 +79,16 @@ public class ModuleDecision extends Module {
      */
     private void determinerNouvellesActions(){
         Random rand = new Random();
+        Coordonnee coo = new Coordonnee(0, 0);
+        Case caseA = getIA().getModuleMemoire().getCarte().getCase(coo);
 
-        Coordonnee coo = new Coordonnee(
-                rand.nextInt(getIA().getModuleMemoire().getCarte().getTaille()),
-                rand.nextInt(getIA().getModuleMemoire().getCarte().getTaille())
-        );
+        while(caseA.getType() != TypeCase.HERBE){
+            coo = new Coordonnee(
+                    rand.nextInt(getIA().getModuleMemoire().getCarte().getTaille()),
+                    rand.nextInt(getIA().getModuleMemoire().getCarte().getTaille())
+            );
+            caseA = getIA().getModuleMemoire().getCarte().getCase(coo);
+        }
 
         seDeplacerEn(coo);
     }
