@@ -1,5 +1,7 @@
 package forageria.metier.actions;
 
+import forageria.metier.TypeMouvement;
+
 import static forageria.metier.actions.TypeAction.DEMANDE;
 
 /**
@@ -31,5 +33,10 @@ public class ActionDemande extends Action {
     @Override
     public TypeAction getType() {
         return DEMANDE;
+    }
+
+    @Override
+    public TypeMouvement getDirection() {
+        return null;
     }
 }

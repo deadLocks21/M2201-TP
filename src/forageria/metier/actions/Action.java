@@ -1,5 +1,7 @@
 package forageria.metier.actions;
 
+import forageria.metier.TypeMouvement;
+
 /**
  * Classe abstraite d'une action.
  */
@@ -19,4 +21,12 @@ public abstract class Action {
      * @return TypeAction correspondant.
      */
     public abstract TypeAction getType();
+
+    /**
+     * Permet de récupérer la direction.
+     *
+     *
+     * @return TypeMouvement représentant la direction.
+     */
+    public abstract TypeMouvement getDirection() ;
 }

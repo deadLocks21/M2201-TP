@@ -32,4 +32,9 @@ public class ActionMouvement extends Action {
     public TypeAction getType() {
         return MOUVEMENT;
     }
+
+    @Override
+    public TypeMouvement getDirection() {
+        return typeMouvement;
+    }
 }
