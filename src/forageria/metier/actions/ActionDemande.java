@@ -1,5 +1,7 @@
 package forageria.metier.actions;
 
+import static forageria.metier.actions.TypeAction.DEMANDE;
+
 /**
  * Permet de demander une action.
  */
@@ -24,5 +26,10 @@ public class ActionDemande extends Action {
     @Override
     public String getMessage() {
         return message;
+    }
+
+    @Override
+    public TypeAction getType() {
+        return DEMANDE;
     }
 }

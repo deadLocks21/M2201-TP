@@ -1,6 +1,7 @@
 package forageria.metier.actions;
 
 import forageria.metier.TypeMouvement;
+import static forageria.metier.actions.TypeAction.MOUVEMENT;
 
 /**
  * Permet de préparer le message de demande de mouvement.
@@ -25,5 +26,10 @@ public class ActionMouvement extends Action {
     @Override
     public String getMessage() {
         return "MOVE|" + typeMouvement;
+    }
+
+    @Override
+    public TypeAction getType() {
+        return MOUVEMENT;
     }
 }
