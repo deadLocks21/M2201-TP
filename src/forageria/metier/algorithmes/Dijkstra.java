@@ -80,7 +80,10 @@ public class Dijkstra extends AlgorithmeCalculDistance {
      * @param b Une des deux cases à comparer.
      */
     private void relachement(Case a, Case b){
-        // TODO Implémenter.
+        if (getDistance(b) > getDistance(a) + coutMouvementVers(b)){
+            setDistances(b, getDistance(a) + coutMouvementVers(b));
+            predecesseur.put(b, a);
+        }
     }
 
     private Case getCaseLaPlusProche(){
