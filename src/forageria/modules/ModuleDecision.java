@@ -4,6 +4,7 @@ import forageria.IA;
 import forageria.metier.TypeMouvement;
 import forageria.metier.actions.Action;
 import forageria.metier.actions.FabriqueAction;
+import forageria.metier.algorithmes.Dijkstra;
 import forageria.metier.algorithmes.ParcoursLargeur;
 import forageria.metier.carte.Carte;
 import forageria.metier.carte.Coordonnee;
@@ -104,13 +105,23 @@ public class ModuleDecision extends Module {
 
         Carte carte = getIA().getModuleMemoire().getCarte();
 
-        ParcoursLargeur parcoursLargeur = new ParcoursLargeur(carte);
-
         Case caseJoueur = getIA().getModuleMemoire().getCaseJoueur();
-        parcoursLargeur.calculerDistancesDepuis(caseJoueur);
-
         Case caseDestination = carte.getCase(coordonnee);
-        ArrayList<TypeMouvement> chemin = parcoursLargeur.getChemin(caseDestination);
+
+        ArrayList<TypeMouvement> chemin = null;
+
+        // Parcors en largeur
+        /*ParcoursLargeur parcoursLargeur = new ParcoursLargeur(carte);
+        parcoursLargeur.calculerDistancesDepuis(caseJoueur);
+        chemin = parcoursLargeur.getChemin(caseDestination);*/
+
+
+        // Dijkstra
+        Dijkstra dijkstra = new Dijkstra(carte);
+        dijkstra.calculerDistancesDepuis(caseJoueur);
+        chemin = dijkstra.getChemin(caseDestination);
+
+
 
         for(TypeMouvement mvt : chemin){
             Action action = FabriqueAction.creerMouvement(mvt);
