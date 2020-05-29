@@ -87,8 +87,17 @@ public class Dijkstra extends AlgorithmeCalculDistance {
     }
 
     private Case getCaseLaPlusProche(){
-        // TODO Implémenter.
-        return null;
+        int distanceMin = infini;
+        Case res = null;
+
+        for(Case C : getCarte().getCases()){
+            if(!estVisite.get(C) && getDistance(C) < distanceMin){
+                distanceMin = getDistance(C);
+                res = C;
+            }
+        }
+
+        return res;
     }
 
 
