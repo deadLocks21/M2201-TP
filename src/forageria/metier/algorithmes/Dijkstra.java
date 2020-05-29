@@ -52,9 +52,13 @@ public class Dijkstra extends AlgorithmeCalculDistance {
     private int coutMouvementVers(Case destination){
         int ret = infini;
 
-        if(destination.getType() != TypeCase.EAU)
-            ret = destination.getRessource().nombreCoupsPioche() + 1;
-
+        if(destination.getType() != TypeCase.EAU){
+            if(destination.getRessource() != null)
+                ret = destination.getRessource().nombreCoupsPioche() + 1;
+            else
+                ret = 1;
+        }
+        
         return ret;
     }
 
@@ -124,9 +128,14 @@ public class Dijkstra extends AlgorithmeCalculDistance {
         ArrayList<TypeMouvement> res = new ArrayList<>();
         Case c = arrivee;
 
-        while(getDistance(c) != 0){
-            res.add( ( predecesseur.get(c) ).getMouvementPourAller(c) );
-            c = predecesseur.get(c);
+        while(c != null && getDistance(c) != 0){
+            if(predecesseur.get(c) != null){
+                res.add( ( predecesseur.get(c) ).getMouvementPourAller(c) );
+                c = predecesseur.get(c);
+            } else {
+                c = null;
+                res.clear();
+            }
         }
 
         Collections.reverse(res);
