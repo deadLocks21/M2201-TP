@@ -6,10 +6,7 @@ import forageria.metier.carte.cases.CaseHerbe;
 import forageria.metier.carte.cases.FabriqueCase;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static forageria.metier.carte.cases.TypeCase.HERBE;
 
@@ -89,6 +86,27 @@ public class Carte {
         return taille;
     }
 
+    /**
+     * Permet de récupérer la case avec les coo coordonee.
+     *
+     *
+     * @param coordonnee Place de la case à récupérer.
+     *
+     * @return Case en question.
+     */
+    public Case getCase(Coordonnee coordonnee){
+        return cases.get(coordonnee);
+    }
+
+    /**
+     * Renvoie la liste des valeurs stockées dans la HashMap cases.
+     *
+     *
+     * @return Liste des val de HashMap.
+     */
+    public Collection<Case> getCases(){
+        return cases.values();
+    }
 
     /**
      * Méthode permettant d'ajouter une case à la liste des cases.
@@ -102,6 +120,7 @@ public class Carte {
 
         cases.put(coordonnee, c);
     }
+
 
     /**
      * Permet d'afficher la carte de manière lisible.
@@ -128,17 +147,5 @@ public class Carte {
             }
             System.out.println("") ;
         }
-    }
-
-    /**
-     * Permet de récupérer la case avec les coo coordonee.
-     *
-     *
-     * @param coordonnee Place de la case à récupérer.
-     *
-     * @return Case en question.
-     */
-    public Case getCase(Coordonnee coordonnee){
-        return cases.get(coordonnee);
     }
 }
