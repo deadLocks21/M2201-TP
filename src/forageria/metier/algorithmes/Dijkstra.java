@@ -8,6 +8,8 @@ import forageria.metier.carte.cases.CaseHerbe;
 import forageria.metier.carte.cases.TypeCase;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class Dijkstra extends AlgorithmeCalculDistance {
@@ -103,11 +105,31 @@ public class Dijkstra extends AlgorithmeCalculDistance {
 
     @Override
     public void calculerDistancesDepuis(Case depart) {
+        initialisation(depart);
 
+        Case caseLaPlusProche = getCaseLaPlusProche();
+        while (caseLaPlusProche != null){
+            estVisite.put(caseLaPlusProche, true);
+
+            for (Case v : caseLaPlusProche.getVoisins()) {
+                relachement(caseLaPlusProche, v);
+            }
+
+            caseLaPlusProche = getCaseLaPlusProche();
+        }
     }
 
     @Override
     public ArrayList<TypeMouvement> getChemin(Case arrivee) {
-        return null;
+        ArrayList<TypeMouvement> res = new ArrayList<>();
+        Case c = arrivee;
+
+        while(getDistance(c) != 0){
+            res.add( ( predecesseur.get(c) ).getMouvementPourAller(c) );
+            c = predecesseur.get(c);
+        }
+
+        Collections.reverse(res);
+        return res;
     }
 }
