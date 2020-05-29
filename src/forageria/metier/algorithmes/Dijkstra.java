@@ -34,6 +34,7 @@ public class Dijkstra extends AlgorithmeCalculDistance {
 
         estVisite = new HashMap<>();
         predecesseur = new HashMap<>();
+        infini = 1 + 16*getCarte().getTaille()*getCarte().getTaille();
     }
 
 
