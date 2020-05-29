@@ -20,4 +20,9 @@ public class RessourceFer extends Ressource {
     public TypeRessource getType() {
         return TypeRessource.FER;
     }
+
+    @Override
+    public int nombreCoupsPioche() {
+        return 3;
+    }
 }

@@ -20,4 +20,9 @@ public class RessourceArbre extends Ressource {
     public TypeRessource getType() {
         return TypeRessource.ARBRE;
     }
+
+    @Override
+    public int nombreCoupsPioche() {
+        return 1;
+    }
 }

@@ -41,4 +41,12 @@ public abstract class Ressource {
      * @return Type de la ressource sous la forme de TypeRessource.
      */
     public abstract TypeRessource getType();
+
+    /**
+     * Permet de déterminer le nombre de coup de pioche pour casser un bloc.
+     *
+     *
+     * @return Nombre de coup de pioche.
+     */
+    public abstract int nombreCoupsPioche();
 }

@@ -20,4 +20,9 @@ public class RessourceRocher extends Ressource {
     public TypeRessource getType() {
         return TypeRessource.ROCHER;
     }
+
+    @Override
+    public int nombreCoupsPioche() {
+        return 2;
+    }
 }

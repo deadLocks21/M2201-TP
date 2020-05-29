@@ -20,4 +20,9 @@ public class RessourceOr extends Ressource {
     public TypeRessource getType() {
         return TypeRessource.OR;
     }
+
+    @Override
+    public int nombreCoupsPioche() {
+        return 3;
+    }
 }
