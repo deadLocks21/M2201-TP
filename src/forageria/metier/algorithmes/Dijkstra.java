@@ -63,7 +63,13 @@ public class Dijkstra extends AlgorithmeCalculDistance {
      * @param depart Case de départ du calcul.
      */
     private void initialisation(Case depart){
-        // TODO Implémenter.
+        for (Case v : getCarte().getCases()) {
+            setDistances(v, infini);
+            estVisite.put(v, false);
+            predecesseur.put(v, null);
+        }
+
+        setDistances(depart, 0);
     }
 
     /**
