@@ -8,6 +8,9 @@ import forageria.metier.carte.Carte;
 import forageria.metier.carte.Coordonnee;
 import forageria.metier.carte.cases.Case;
 
+import static forageria.metier.actions.TypeAction.COLLECTE;
+import static forageria.metier.actions.TypeAction.MOUVEMENT;
+
 /**
  * Module en charge de la mémorisation et de la restitution des informations obtenues
  * @author Matthieu
@@ -97,7 +100,7 @@ public class ModuleMemoire extends Module  {
     public void genererJoueur(String messageRecu){
         String[] coo = messageRecu.split("/");
 
-        Coordonnee cooJoueur = new Coordonnee(Integer.parseInt(coo[1]), Integer.parseInt(coo[0]));
+        Coordonnee cooJoueur = new Coordonnee(Integer.parseInt(coo[0]), Integer.parseInt(coo[1]));
         joueur = new Joueur(cooJoueur);
     }
 
@@ -118,7 +121,15 @@ public class ModuleMemoire extends Module  {
      * @param action Action que l'on effectue.
      */
     public void effectuerAction(Action action){
-        if (action.getType() == TypeAction.MOUVEMENT)
-            joueur.deplacer(action.getDirection());
+        if(action.getType() == MOUVEMENT) {
+            joueur.deplacer(action.getDirection()) ;
+        }
+        else if(action.getType() == COLLECTE) {
+            Case caseDestination = this.carte.getCase(this.getCaseJoueur().
+                    getCoordonnee().getVoisin(action.getDirection())) ;
+            if(!caseDestination.estVide()) {
+                caseDestination.setRessource(null) ;
+            }
+        }
     }
 }

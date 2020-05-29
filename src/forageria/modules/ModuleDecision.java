@@ -4,6 +4,8 @@ import forageria.IA;
 import forageria.metier.TypeMouvement;
 import forageria.metier.actions.Action;
 import forageria.metier.actions.FabriqueAction;
+import forageria.metier.actions.TypeAction;
+import forageria.metier.algorithmes.AlgorithmeCalculDistance;
 import forageria.metier.algorithmes.Dijkstra;
 import forageria.metier.algorithmes.ParcoursLargeur;
 import forageria.metier.carte.Carte;
@@ -52,25 +54,41 @@ public class ModuleDecision extends Module {
     public String determinerNouvelleAction(String messageRecu) {
         String messageReponse = "END";
 
-        //Gestion de la carte et du joueur
-        if(!super.getIA().getModuleMemoire().hasCarte()) {
-            listeDesActionsARealiser.add(FabriqueAction.creerDemande(CARTE));
-            listeDesActionsARealiser.add(FabriqueAction.creerDemande(JOUEUR));
+        //Gestion de la carte
+        if(!this.getIA().getModuleMemoire().hasCarte()) {
+            this.listeDesActionsARealiser.add(FabriqueAction.creerDemande(CARTE));
         }
 
-        //Détermine de nouvelles actions si besoin
-        if (listeDesActionsARealiser.size() == 0)
-            determinerNouvellesActions();
+        //Gestion de la position du joueur
+        if(!this.getIA().getModuleMemoire().hasJoueur()) {
+            this.listeDesActionsARealiser.add(FabriqueAction.creerDemande(JOUEUR));
+        }
 
-        //Réalisation de la première action de la liste
-        if (listeDesActionsARealiser.size() != 0) {
-            messageReponse = listeDesActionsARealiser.get(0).getMessage();
-            getIA().getModuleMemoire().effectuerAction(listeDesActionsARealiser.get(0));
-            listeDesActionsARealiser.remove(0);
-        } else {
+        //L'IA n'a plus rien à faire
+        if(this.listeDesActionsARealiser.isEmpty()) {
+            this.determinerNouvellesActions();
+        }
+
+
+        //Réalisation de la première action
+        if(!this.listeDesActionsARealiser.isEmpty()) {
+            Action action = this.listeDesActionsARealiser.get(0);
+            if(action.getType() == TypeAction.MOUVEMENT) {
+                Coordonnee coordonneDestination = this.getIA().getModuleMemoire().getCaseJoueur().getCoordonnee().getVoisin(action.getDirection());
+                Case caseDestination = this.getIA().getModuleMemoire().getCarte().getCase(coordonneDestination);
+                if(!caseDestination.estVide()) {
+                    for(int i=0;i<caseDestination.getRessource().nombreCoupsPioche();i++) {
+                        this.listeDesActionsARealiser.add(0,FabriqueAction.creerCollecte(action.getDirection()));
+                    }
+                }
+            }
+            messageReponse = this.listeDesActionsARealiser.get(0).getMessage();
+            this.getIA().getModuleMemoire().effectuerAction(this.listeDesActionsARealiser.get(0));
+            this.listeDesActionsARealiser.remove(0);
+        }
+        else {
             messageReponse = "WAIT";
         }
-
 
         return messageReponse;
     }
@@ -79,19 +97,11 @@ public class ModuleDecision extends Module {
      * Méthode permettant de déterminer les nouvelles actions.
      */
     private void determinerNouvellesActions(){
-        Random rand = new Random();
-        Coordonnee coo = new Coordonnee(0, 0);
-        Case caseA = getIA().getModuleMemoire().getCarte().getCase(coo);
-
-        while(caseA.getType() != TypeCase.HERBE){
-            coo = new Coordonnee(
-                    rand.nextInt(getIA().getModuleMemoire().getCarte().getTaille()),
-                    rand.nextInt(getIA().getModuleMemoire().getCarte().getTaille())
-            );
-            caseA = getIA().getModuleMemoire().getCarte().getCase(coo);
-        }
-
-        seDeplacerEn(coo);
+        Random generateur = new Random();
+        int ligne = generateur.nextInt(this.getIA().getModuleMemoire().getCarte().getTaille());
+        int colonne = generateur.nextInt(this.getIA().getModuleMemoire().getCarte().getTaille());
+        this.seDeplacerEn(new Coordonnee(ligne,colonne));
+        // this.seDeplacerEn(new Coordonnee(7,2));
     }
 
     /**
@@ -101,32 +111,16 @@ public class ModuleDecision extends Module {
      * @param coordonnee Coo ou l'on veut déplacer le joueur.
      */
     private void seDeplacerEn(Coordonnee coordonnee){
-        System.out.println("--- Je veux aller en " + coordonnee + " ---");
+        System.out.println("--- Je veux me déplacer en "+coordonnee+" ---");
 
-        Carte carte = getIA().getModuleMemoire().getCarte();
+        Carte carte = this.getIA().getModuleMemoire().getCarte();
+        AlgorithmeCalculDistance algorithme = new Dijkstra(carte);
 
-        Case caseJoueur = getIA().getModuleMemoire().getCaseJoueur();
-        Case caseDestination = carte.getCase(coordonnee);
+        algorithme.calculerDistancesDepuis(this.getIA().getModuleMemoire().getCaseJoueur());
+        ArrayList<TypeMouvement> listeMouvement = algorithme.getChemin(carte.getCase(coordonnee));
 
-        ArrayList<TypeMouvement> chemin = null;
-
-        // Parcors en largeur
-        /*ParcoursLargeur parcoursLargeur = new ParcoursLargeur(carte);
-        parcoursLargeur.calculerDistancesDepuis(caseJoueur);
-        chemin = parcoursLargeur.getChemin(caseDestination);*/
-
-
-        // Dijkstra
-        Dijkstra dijkstra = new Dijkstra(carte);
-        dijkstra.calculerDistancesDepuis(caseJoueur);
-        chemin = dijkstra.getChemin(caseDestination);
-
-
-
-        for(TypeMouvement mvt : chemin){
-            Action action = FabriqueAction.creerMouvement(mvt);
-            listeDesActionsARealiser.add(action);
+        for(TypeMouvement mouvement : listeMouvement) {
+            this.listeDesActionsARealiser.add(FabriqueAction.creerMouvement(mouvement));
         }
-
     }
 }
