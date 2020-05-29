@@ -40,4 +40,8 @@ public class FabriqueAction {
 
         return actionDemande;
     }
+
+    public static Action creerCollecte(TypeMouvement direction){
+        return new ActionCollecte(direction);
+    }
 }
