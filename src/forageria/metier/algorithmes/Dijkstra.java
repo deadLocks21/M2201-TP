@@ -5,6 +5,7 @@ import forageria.metier.carte.Carte;
 import forageria.metier.carte.Coordonnee;
 import forageria.metier.carte.cases.Case;
 import forageria.metier.carte.cases.CaseHerbe;
+import forageria.metier.carte.cases.TypeCase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,8 +48,12 @@ public class Dijkstra extends AlgorithmeCalculDistance {
      * @return Cout pour se déplacer.
      */
     private int coutMouvementVers(Case destination){
-        // TODO Implémenter.
-        return 0;
+        int ret = infini;
+
+        if(destination.getType() != TypeCase.EAU)
+            ret = destination.getRessource().nombreCoupsPioche() + 1;
+
+        return ret;
     }
 
     /**
