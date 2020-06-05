@@ -1,6 +1,11 @@
 package forageria.modules.etats;
 
+import forageria.metier.actions.FabriqueAction;
+import forageria.metier.actions.TypeDemande;
 import forageria.modules.ModuleDecision;
+import forageria.metier.actions.TypeDemande;
+
+import static forageria.metier.actions.TypeDemande.CARTE;
 
 /**
  * Etat qui initalise la carte.
@@ -18,11 +23,11 @@ public class EtatCarte extends Etat {
 
     @Override
     public Etat transition() {
-        return null;
+        return new EtatReflexion(getModule());
     }
 
     @Override
     public void action() {
-
+        getModule().ajouterActionPrioritaire(FabriqueAction.creerDemande(CARTE));
     }
 }

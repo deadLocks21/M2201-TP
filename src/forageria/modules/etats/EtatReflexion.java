@@ -3,7 +3,7 @@ package forageria.modules.etats;
 import forageria.modules.ModuleDecision;
 
 /**
- * Etat qui choisi s'il initalise la carte ou réalise la premiere action de la liste.
+ * Etat qui réalise la premiere action de la liste.
  */
 public class EtatReflexion extends Etat {
     /**
@@ -18,11 +18,22 @@ public class EtatReflexion extends Etat {
 
     @Override
     public Etat transition() {
-        return null;
+        Etat res;
+
+        if(!getMemoire().hasCarte())
+            res = new EtatCarte(getModule());
+        else if (getModule().hasAction())
+            res = new EtatReflexion(getModule());
+        else
+            res = new EtatInnocupe(getModule());
+
+        return res;
     }
 
     @Override
     public void action() {
-
+        // Réalise une action si il y a des actions dans la liste
+        if(getModule().hasAction())
+            getModule().realiserAction();
     }
 }
