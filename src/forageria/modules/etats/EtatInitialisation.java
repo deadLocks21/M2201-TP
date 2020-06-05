@@ -1,5 +1,7 @@
 package forageria.modules.etats;
 
+import forageria.metier.actions.FabriqueAction;
+import forageria.metier.actions.TypeDemande;
 import forageria.modules.ModuleDecision;
 
 /**
@@ -18,11 +20,11 @@ public class EtatInitialisation extends Etat {
 
     @Override
     public Etat transition() {
-        return null;
+        return new EtatReflexion(getModule());
     }
 
     @Override
     public void action() {
-
+        getModule().ajouterAction(FabriqueAction.creerDemande(TypeDemande.JOUEUR));
     }
 }

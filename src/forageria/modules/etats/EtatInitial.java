@@ -18,7 +18,7 @@ public class EtatInitial extends Etat {
 
     @Override
     public Etat transition() {
-        return null;
+        return new EtatInitialisation(getModule());
     }
 
     @Override
