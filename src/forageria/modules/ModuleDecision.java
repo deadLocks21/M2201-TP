@@ -52,6 +52,17 @@ public class ModuleDecision extends Module {
 
 
     /**
+     * Permet d'ajouter une action à la fin de la liste.
+     *
+     *
+     * @param action Action à ajouter.
+     */
+    public void ajouterAction(Action action){
+        listeDesActionsARealiser.add(action);
+    }
+
+
+    /**
      * Méthode principale de prise de décision
      *
      *
