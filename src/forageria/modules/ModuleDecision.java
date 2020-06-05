@@ -35,6 +35,10 @@ public class ModuleDecision extends Module {
      * Etat dans lequel se trouve notre automate.
      */
     private Etat etatCourant;
+    /**
+     * Stocke la réponse pourle serveur.
+     */
+    private String messageReponse;
 
 
     /**
@@ -161,5 +165,26 @@ public class ModuleDecision extends Module {
         for(TypeMouvement mouvement : listeMouvement) {
             this.listeDesActionsARealiser.add(FabriqueAction.creerMouvement(mouvement));
         }
+    }
+
+    /**
+     * Permet de réaliser la première action de la liste.
+     */
+    public void realiserAction(){
+        //On réalise la première action de la liste
+        Action action = this.listeDesActionsARealiser.get(0);
+
+        if (action.getType() == TypeAction.MOUVEMENT) {
+            Coordonnee coordonneDestination = this.getIA().getModuleMemoire().getCaseJoueur().getCoordonnee().getVoisin(action.getDirection()) ;
+            Case caseDestination = this.getIA().getModuleMemoire().getCarte().getCase(coordonneDestination) ;
+
+            if (!caseDestination.estVide())
+                for (int i = 0 ; i < caseDestination.getRessource().nombreCoupsPioche() ; i++)
+                    this.listeDesActionsARealiser.add(0, FabriqueAction.creerCollecte(action.getDirection()));
+        }
+
+        this.messageReponse = this.listeDesActionsARealiser.get(0).getMessage();
+        this.getIA().getModuleMemoire().effectuerAction(this.listeDesActionsARealiser.get(0));
+        this.listeDesActionsARealiser.remove(0) ;
     }
 }
