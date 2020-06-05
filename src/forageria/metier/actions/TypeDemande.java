@@ -5,5 +5,6 @@ package forageria.metier.actions;
  */
 public enum TypeDemande {
     CARTE,
-    JOUEUR
+    JOUEUR,
+    ATTENDRE
 }
