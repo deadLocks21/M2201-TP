@@ -52,6 +52,16 @@ public class ModuleDecision extends Module {
 
 
     /**
+     * Ajoute une action au début de la liste, elle sera traité en premier.
+     *
+     *
+     * @param action Action à ajouter.
+     */
+    public void ajouterActionPrioritaire(Action action){
+        listeDesActionsARealiser.add(0, action);
+    }
+
+    /**
      * Permet d'ajouter une action à la fin de la liste.
      *
      *
