@@ -36,6 +36,8 @@ public class FabriqueAction {
             case CARTE:
                 actionDemande = new ActionDemande("MAP");
                 break;
+            case ATTENDRE:
+                actionDemande = new ActionDemande("WAIT");
         }
 
         return actionDemande;
