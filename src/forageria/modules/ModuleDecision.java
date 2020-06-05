@@ -71,6 +71,16 @@ public class ModuleDecision extends Module {
         listeDesActionsARealiser.add(action);
     }
 
+    /**
+     * Permet de savoir s'il y a qqc dans la liste des actions.
+     *
+     *
+     * @return TRUE si on a des actions dans la liste.
+     */
+    public boolean hasAction(){
+        return listeDesActionsARealiser.size() != 0;
+    }
+
 
     /**
      * Méthode principale de prise de décision
