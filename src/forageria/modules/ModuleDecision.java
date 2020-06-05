@@ -13,6 +13,8 @@ import forageria.metier.carte.Coordonnee;
 import forageria.metier.carte.cases.Case;
 import forageria.metier.carte.cases.FabriqueCase;
 import forageria.metier.carte.cases.TypeCase;
+import forageria.modules.etats.Etat;
+import forageria.modules.etats.EtatInitial;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -29,6 +31,10 @@ public class ModuleDecision extends Module {
      * Liste des actions à effectuer.
      */
     public ArrayList<Action> listeDesActionsARealiser ;
+    /**
+     * Etat dans lequel se trouve notre automate.
+     */
+    private Etat etatCourant;
 
 
     /**
@@ -39,7 +45,9 @@ public class ModuleDecision extends Module {
      */
     public ModuleDecision(IA ia) {
         super(ia);
+
         listeDesActionsARealiser = new ArrayList<Action>();
+        etatCourant = new EtatInitial(this);
     }
 
 
