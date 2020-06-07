@@ -24,6 +24,10 @@ public class ModuleMemoire extends Module  {
      * Stocke notre joueur.
      */
     Joueur joueur;
+    /**
+     * Durée de validité de la carte avant de la recharger.
+     */
+    int dureeValiditeCarte;  // TODO Init
 
 
     /**
