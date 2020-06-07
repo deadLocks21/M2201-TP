@@ -33,7 +33,7 @@ public class EtatRechercheBois extends Etat {
 
     @Override
     public Etat transition() {
-        return null;
+        return chemin == null ? new EtatAttendre(getModule()) : new EtatCollecter(getModule(), chemin, ressource);
     }
 
     @Override
