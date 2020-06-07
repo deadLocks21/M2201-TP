@@ -73,7 +73,7 @@ public class ModuleMemoire extends Module  {
      * @return TRUE | FALSE
      */
     public boolean hasCarte(){
-        return carte != null;
+        return carte != null && dureeValiditeCarte > 0;
     }
 
     /**
