@@ -95,42 +95,12 @@ public class ModuleDecision extends Module {
      * @return Le prochain message à envoyer
      */
     public String determinerNouvelleAction(String messageRecu) {
-        String messageReponse = "END";
+        //On fait tourner l'automate de décision jusqu'à avoir qqchose à faire
+        this.messageReponse = "" ;
 
-        //Gestion de la carte
-        if(!this.getIA().getModuleMemoire().hasCarte()) {
-            this.listeDesActionsARealiser.add(FabriqueAction.creerDemande(CARTE));
-        }
-
-        //Gestion de la position du joueur
-        if(!this.getIA().getModuleMemoire().hasJoueur()) {
-            this.listeDesActionsARealiser.add(FabriqueAction.creerDemande(JOUEUR));
-        }
-
-        //L'IA n'a plus rien à faire
-        if(this.listeDesActionsARealiser.isEmpty()) {
-            this.determinerNouvellesActions();
-        }
-
-
-        //Réalisation de la première action
-        if(!this.listeDesActionsARealiser.isEmpty()) {
-            Action action = this.listeDesActionsARealiser.get(0);
-            if(action.getType() == TypeAction.MOUVEMENT) {
-                Coordonnee coordonneDestination = this.getIA().getModuleMemoire().getCaseJoueur().getCoordonnee().getVoisin(action.getDirection());
-                Case caseDestination = this.getIA().getModuleMemoire().getCarte().getCase(coordonneDestination);
-                if(!caseDestination.estVide()) {
-                    for(int i=0;i<caseDestination.getRessource().nombreCoupsPioche();i++) {
-                        this.listeDesActionsARealiser.add(0,FabriqueAction.creerCollecte(action.getDirection()));
-                    }
-                }
-            }
-            messageReponse = this.listeDesActionsARealiser.get(0).getMessage();
-            this.getIA().getModuleMemoire().effectuerAction(this.listeDesActionsARealiser.get(0));
-            this.listeDesActionsARealiser.remove(0);
-        }
-        else {
-            messageReponse = "WAIT";
+        while(this.messageReponse.equals("")) {
+            etatCourant = etatCourant.transition() ;
+            etatCourant.action() ;
         }
 
         return messageReponse;
