@@ -1,6 +1,10 @@
 package forageria.modules.etats;
 
 import forageria.metier.TypeMouvement;
+import forageria.metier.algorithmes.AlgorithmeCalculDistance;
+import forageria.metier.algorithmes.Dijkstra;
+import forageria.metier.carte.Carte;
+import forageria.metier.carte.cases.Case;
 import forageria.metier.carte.ressources.TypeRessource;
 import forageria.modules.ModuleDecision;
 
@@ -38,6 +42,28 @@ public class EtatRechercheBois extends Etat {
 
     @Override
     public void action() {
+        int distanceMin;
+        Case arbreLePlusProche;
 
+        Carte carte = getMemoire().getCarte();
+        AlgorithmeCalculDistance algorithme = new Dijkstra(carte);
+        algorithme.calculerDistancesDepuis(getMemoire().getCaseJoueur());
+
+        distanceMin = 1;
+        arbreLePlusProche = null;
+
+        for (Case C : carte.getCases()){
+            if((C.getRessource() != null) && (C.getRessource().getType() == TypeRessource.ARBRE)) {
+                if(arbreLePlusProche == null || algorithme.getDistance(C) < distanceMin){
+                    distanceMin = algorithme.getDistance(C);
+                    arbreLePlusProche = C;
+                }
+            }
+        }
+
+        if (arbreLePlusProche != null){
+            ressource = arbreLePlusProche.getRessource().getType();
+            chemin = algorithme.getChemin(arbreLePlusProche);
+        }
     }
 }
