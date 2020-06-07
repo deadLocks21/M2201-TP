@@ -132,6 +132,7 @@ public class ModuleMemoire extends Module  {
     public void effectuerAction(Action action){
         if(action.getType() == MOUVEMENT) {
             joueur.deplacer(action.getDirection()) ;
+            dureeValiditeCarte --;
         }
         else if(action.getType() == COLLECTE) {
             Case caseDestination = this.carte.getCase(this.getCaseJoueur().
