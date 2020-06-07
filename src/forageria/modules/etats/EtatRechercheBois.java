@@ -5,6 +5,7 @@ import forageria.metier.algorithmes.AlgorithmeCalculDistance;
 import forageria.metier.algorithmes.Dijkstra;
 import forageria.metier.carte.Carte;
 import forageria.metier.carte.cases.Case;
+import forageria.metier.carte.ressources.Ressource;
 import forageria.metier.carte.ressources.TypeRessource;
 import forageria.modules.ModuleDecision;
 
@@ -21,7 +22,7 @@ public class EtatRechercheBois extends Etat {
     /**
      * Ressource à collecter.
      */
-    TypeRessource ressource;
+    Ressource ressource;
 
     /**
      * Constructeur de l'EtatRechercheBois.
@@ -62,7 +63,7 @@ public class EtatRechercheBois extends Etat {
         }
 
         if (arbreLePlusProche != null){
-            ressource = arbreLePlusProche.getRessource().getType();
+            ressource = arbreLePlusProche.getRessource();
             chemin = algorithme.getChemin(arbreLePlusProche);
         }
     }
