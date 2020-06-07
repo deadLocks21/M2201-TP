@@ -1,6 +1,7 @@
 package forageria.modules.etats;
 
 import forageria.metier.TypeMouvement;
+import forageria.metier.carte.ressources.TypeRessource;
 import forageria.modules.ModuleDecision;
 
 import java.util.ArrayList;
@@ -13,6 +14,10 @@ public class EtatCollecter extends Etat {
      * Permet de stocker le chemin jusqu'à une ressource.
      */
     ArrayList<TypeMouvement> chemin;
+    /**
+     * Ressource à collecter.
+     */
+    TypeRessource ressource;
 
     /**
      * Constructeur de l'EtatCollecter.
@@ -21,6 +26,8 @@ public class EtatCollecter extends Etat {
      */
     public EtatCollecter(ModuleDecision module) {
         super(module);
+
+        // TODO Initialiser chemin.
     }
 
 
