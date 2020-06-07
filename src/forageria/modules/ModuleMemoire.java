@@ -84,6 +84,7 @@ public class ModuleMemoire extends Module  {
      */
     public void genererCarte(String messageRecu){
         carte = new Carte(messageRecu);
+        dureeValiditeCarte = 2;
 
         // Décommenter pour afficher la carte lors de sa construction
         // carte.afficheConsole();
