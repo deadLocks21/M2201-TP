@@ -34,6 +34,9 @@ public class ModuleMemoire extends Module  {
      */
     public ModuleMemoire(IA ia) {
         super(ia);
+
+        carte = null;
+        joueur = null;
     }
 
 

@@ -25,6 +25,7 @@ public abstract class Etat {
      */
     public Etat(ModuleDecision module){
         this.module = module;
+        this.memoire = module.getIA().getModuleMemoire();
     }
 
 

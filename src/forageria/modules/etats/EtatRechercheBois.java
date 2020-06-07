@@ -32,7 +32,8 @@ public class EtatRechercheBois extends Etat {
     public EtatRechercheBois(ModuleDecision module) {
         super(module);
 
-        // TODO Initialiser chemin.
+        chemin = new ArrayList<>();
+        ressource = null;
     }
 
 
