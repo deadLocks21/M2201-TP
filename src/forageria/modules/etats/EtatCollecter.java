@@ -24,10 +24,11 @@ public class EtatCollecter extends Etat {
      *
      * @param module Valeur de la variable module.
      */
-    public EtatCollecter(ModuleDecision module) {
+    public EtatCollecter(ModuleDecision module, ArrayList<TypeMouvement> chemin, TypeRessource ressource) {
         super(module);
 
-        // TODO Initialiser chemin.
+        this.chemin = chemin;
+        this.ressource = ressource;
     }
 
 
