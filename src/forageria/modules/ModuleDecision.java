@@ -137,37 +137,6 @@ public class ModuleDecision extends Module {
     }
 
     /**
-     * Méthode permettant de déterminer les nouvelles actions.
-     */
-    private void determinerNouvellesActions(){
-        Random generateur = new Random();
-        int ligne = generateur.nextInt(this.getIA().getModuleMemoire().getCarte().getTaille());
-        int colonne = generateur.nextInt(this.getIA().getModuleMemoire().getCarte().getTaille());
-        this.seDeplacerEn(new Coordonnee(ligne,colonne));
-        // this.seDeplacerEn(new Coordonnee(7,2));
-    }
-
-    /**
-     * Permet de déplacer le joueur jusqu'à des coo.
-     *
-     *
-     * @param coordonnee Coo ou l'on veut déplacer le joueur.
-     */
-    private void seDeplacerEn(Coordonnee coordonnee){
-        System.out.println("--- Je veux me déplacer en "+coordonnee+" ---");
-
-        Carte carte = this.getIA().getModuleMemoire().getCarte();
-        AlgorithmeCalculDistance algorithme = new Dijkstra(carte);
-
-        algorithme.calculerDistancesDepuis(this.getIA().getModuleMemoire().getCaseJoueur());
-        ArrayList<TypeMouvement> listeMouvement = algorithme.getChemin(carte.getCase(coordonnee));
-
-        for(TypeMouvement mouvement : listeMouvement) {
-            this.listeDesActionsARealiser.add(FabriqueAction.creerMouvement(mouvement));
-        }
-    }
-
-    /**
      * Permet de réaliser la première action de la liste.
      */
     public void realiserAction(){
