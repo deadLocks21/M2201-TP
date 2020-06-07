@@ -41,6 +41,7 @@ public class ModuleMemoire extends Module  {
 
         carte = null;
         joueur = null;
+        dureeValiditeCarte = 0;
     }
 
 
