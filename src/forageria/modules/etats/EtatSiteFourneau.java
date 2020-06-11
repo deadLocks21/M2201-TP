@@ -1,5 +1,6 @@
 package forageria.modules.etats;
 
+import forageria.metier.carte.Coordonnee;
 import forageria.modules.ModuleDecision;
 
 /**
@@ -17,7 +18,9 @@ public class EtatSiteFourneau extends Etat {
 
     @Override
     public Etat transition() {
-        return null;
+        return getMemoire().getSiteFourneau().equals(new Coordonnee(-1, -1)) ?
+                new EtatTrouverSiteFourneau(getModule()) :
+                new EtatAttendre(getModule());
     }
 
     @Override
