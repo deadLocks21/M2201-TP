@@ -2,6 +2,8 @@ package forageria.metier.carte.ressources;
 
 import forageria.metier.carte.cases.Case;
 
+import java.util.ArrayList;
+
 /**
  * Classe représentant un rocher.
  */
@@ -24,5 +26,12 @@ public class RessourceRocher extends Ressource {
     @Override
     public int nombreCoupsPioche() {
         return 2;
+    }
+
+    @Override
+    public ArrayList<TypeMateriau> getLoot() {
+        return new ArrayList<>(){{
+            add(TypeMateriau.PIERRE);
+        }};
     }
 }

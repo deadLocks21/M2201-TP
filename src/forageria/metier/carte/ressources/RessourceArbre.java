@@ -2,6 +2,8 @@ package forageria.metier.carte.ressources;
 
 import forageria.metier.carte.cases.Case;
 
+import java.util.ArrayList;
+
 /**
  * Classe représentant un arbre.
  */
@@ -24,5 +26,12 @@ public class RessourceArbre extends Ressource {
     @Override
     public int nombreCoupsPioche() {
         return 1;
+    }
+
+    @Override
+    public ArrayList<TypeMateriau> getLoot() {
+        return new ArrayList<>(){{
+            add(TypeMateriau.BOIS);
+        }};
     }
 }

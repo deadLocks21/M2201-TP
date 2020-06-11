@@ -5,7 +5,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * 
  * @author Matthieu
  */
 public class ForagerIA {
@@ -21,5 +20,4 @@ public class ForagerIA {
             System.err.println("Problème de connexion avec le serveur");
         }
     }
-    
 }

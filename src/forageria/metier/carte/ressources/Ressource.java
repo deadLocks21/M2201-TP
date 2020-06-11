@@ -2,6 +2,8 @@ package forageria.metier.carte.ressources;
 
 import forageria.metier.carte.cases.Case;
 
+import java.util.ArrayList;
+
 /**
  * Classe en charge de stocker une ressource.
  */
@@ -49,4 +51,12 @@ public abstract class Ressource {
      * @return Nombre de coup de pioche.
      */
     public abstract int nombreCoupsPioche();
+
+    /**
+     * Permet de récupérer la liste des loots.
+     *
+     *
+     * @return Liste contenant les loots.
+     */
+    public abstract ArrayList<TypeMateriau> getLoot() ;
 }

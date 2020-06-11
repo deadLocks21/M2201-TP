@@ -2,6 +2,8 @@ package forageria.metier.carte.ressources;
 
 import forageria.metier.carte.cases.Case;
 
+import java.util.ArrayList;
+
 /**
  * Classe représentant un or.
  */
@@ -24,5 +26,13 @@ public class RessourceOr extends Ressource {
     @Override
     public int nombreCoupsPioche() {
         return 3;
+    }
+
+    @Override
+    public ArrayList<TypeMateriau> getLoot() {
+        return new ArrayList<>(){{
+            for(int i = 0; i < 2; i++)
+                add(TypeMateriau.OR);
+        }};
     }
 }
