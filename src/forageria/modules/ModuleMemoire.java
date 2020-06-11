@@ -36,6 +36,8 @@ public class ModuleMemoire extends Module  {
      * Représente l'inventaire du joueur.
      */
     private HashMap<TypeMateriau,Integer> inventaire;
+
+
     /**
      * Stocke l'emplacement du fourneau.
      */
@@ -82,6 +84,26 @@ public class ModuleMemoire extends Module  {
      */
     public Carte getCarte(){
         return carte;
+    }
+
+    /**
+     * Assesseur de la variable siteFourneau.
+     *
+     *
+     * @return Valeur de siteFourneau.
+     */
+    public Coordonnee getSiteFourneau() {
+        return siteFourneau;
+    }
+
+    /**
+     * Mutateur de la variable siteFourneau.
+     *
+     *
+     * @param siteFourneau Nouvelle valeur de siteFourneau.
+     */
+    public void setSiteFourneau(Coordonnee siteFourneau) {
+        this.siteFourneau = siteFourneau;
     }
 
 
