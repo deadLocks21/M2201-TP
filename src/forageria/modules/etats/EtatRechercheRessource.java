@@ -23,17 +23,23 @@ public class EtatRechercheRessource extends Etat {
      * Ressource à collecter.
      */
     Ressource ressource;
+    /**
+     * Liste des ressources à rechercher.
+     */
+    ArrayList<TypeRessource> ressourcesRecherchees;
 
     /**
      * Constructeur de l'EtatRechercheRessource.
      *
      * @param module Valeur de la variable module.
+     * @param ressourcesRecherchees Ressources que le joueur cherche.
      */
-    public EtatRechercheRessource(ModuleDecision module) {
+    public EtatRechercheRessource(ModuleDecision module, ArrayList<TypeRessource> ressourcesRecherchees) {
         super(module);
 
         chemin = new ArrayList<>();
         ressource = null;
+        this.ressourcesRecherchees = ressourcesRecherchees;
     }
 
 
