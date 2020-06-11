@@ -146,9 +146,9 @@ public class ModuleMemoire extends Module  {
             dureeValiditeCarte --;
         }
         else if(action.getType() == COLLECTE) {
-            Case caseDestination = this.carte.getCase(this.getCaseJoueur().
-                    getCoordonnee().getVoisin(action.getDirection())) ;
+            Case caseDestination = this.carte.getCase(this.getCaseJoueur().getCoordonnee().getVoisin(action.getDirection())) ;
             if(!caseDestination.estVide()) {
+                recolter(caseDestination.getRessource());
                 caseDestination.setRessource(null) ;
             }
         }
