@@ -30,8 +30,10 @@ public class RessourceArbre extends Ressource {
 
     @Override
     public ArrayList<TypeMateriau> getLoot() {
-        return new ArrayList<>(){{
-            add(TypeMateriau.BOIS);
-        }};
+        ArrayList<TypeMateriau> ret = new ArrayList<>();
+
+        ret.add(TypeMateriau.BOIS);
+
+        return ret;
     }
 }

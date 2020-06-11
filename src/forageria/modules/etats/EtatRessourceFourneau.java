@@ -21,12 +21,13 @@ public class EtatRessourceFourneau extends Etat {
 
     @Override
     public Etat transition() {
+        ArrayList<TypeRessource> ressources =  new ArrayList<>();
+
+        ressources.add(TypeRessource.ROCHER);
+
         return getMemoire().getQuantiteMateriel(TypeMateriau.PIERRE) < 10 ?
                 new EtatRechercheRessource(
-                        getModule(),
-                        new ArrayList<>(){{
-                            add(TypeRessource.ROCHER);
-                        }}) :
+                        getModule(), ressources) :
                 new EtatAttendre(getModule());
     }
 

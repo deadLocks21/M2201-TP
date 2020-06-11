@@ -30,9 +30,11 @@ public class RessourceFer extends Ressource {
 
     @Override
     public ArrayList<TypeMateriau> getLoot() {
-        return new ArrayList<>(){{
-            for(int i = 0; i < 2; i++)
-                add(TypeMateriau.FER);
-        }};
+        ArrayList<TypeMateriau> ret = new ArrayList<>();
+
+        for(int i = 0; i < 2; i++)
+            ret.add(TypeMateriau.FER);
+
+        return ret;
     }
 }
