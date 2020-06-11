@@ -7,6 +7,9 @@ import forageria.metier.actions.TypeAction;
 import forageria.metier.carte.Carte;
 import forageria.metier.carte.Coordonnee;
 import forageria.metier.carte.cases.Case;
+import forageria.metier.carte.ressources.TypeMateriau;
+
+import java.util.HashMap;
 
 import static forageria.metier.actions.TypeAction.COLLECTE;
 import static forageria.metier.actions.TypeAction.MOUVEMENT;
@@ -27,7 +30,8 @@ public class ModuleMemoire extends Module  {
     /**
      * Durée de validité de la carte avant de la recharger.
      */
-    int dureeValiditeCarte;  // TODO Init
+    int dureeValiditeCarte;
+    HashMap<TypeMateriau,Integer> inventaire;
 
 
     /**
@@ -42,6 +46,12 @@ public class ModuleMemoire extends Module  {
         carte = null;
         joueur = null;
         dureeValiditeCarte = 0;
+        inventaire = new HashMap<>();
+
+        // Initialisation de toutes les valeurs possibles de inventaire.
+        for (TypeMateriau TM : TypeMateriau.values()) {
+            inventaire.put(TM, 0);
+        }
     }
 
 
