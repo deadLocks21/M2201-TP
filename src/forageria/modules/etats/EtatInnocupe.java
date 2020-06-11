@@ -21,11 +21,12 @@ public class EtatInnocupe extends Etat {
 
     @Override
     public Etat transition() {
-        ArrayList<TypeRessource> ressources = new ArrayList<>(){{
+        /*ArrayList<TypeRessource> ressources = new ArrayList<>(){{
             add(TypeRessource.ARBRE);
             add(TypeRessource.ROCHER);
         }};
-        return new EtatRechercheRessource(getModule(), ressources);
+        return new EtatRechercheRessource(getModule(), ressources);*/  // TODO Supprimer si bien inutile
+        return new EtatRessourceFourneau(getModule());
     }
 
     @Override
