@@ -1,6 +1,9 @@
 package forageria.modules.etats;
 
+import forageria.metier.carte.ressources.TypeRessource;
 import forageria.modules.ModuleDecision;
+
+import java.util.ArrayList;
 
 /**
  * Etat qui ne fait rien.
@@ -18,7 +21,11 @@ public class EtatInnocupe extends Etat {
 
     @Override
     public Etat transition() {
-        return new EtatRechercheRessource(getModule());
+        ArrayList<TypeRessource> ressources = new ArrayList<>(){{
+            add(TypeRessource.ARBRE);
+            add(TypeRessource.ROCHER);
+        }};
+        return new EtatRechercheRessource(getModule(), ressources);
     }
 
     @Override
