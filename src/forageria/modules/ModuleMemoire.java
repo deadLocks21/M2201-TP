@@ -32,7 +32,14 @@ public class ModuleMemoire extends Module  {
      * Durée de validité de la carte avant de la recharger.
      */
     int dureeValiditeCarte;
+    /**
+     * Représente l'inventaire du joueur.
+     */
     HashMap<TypeMateriau,Integer> inventaire;
+    /**
+     * Stocke l'emplacement du fourneau.
+     */
+    Coordonnee siteFourneau;  // TODO Initiliser.
 
 
     /**
