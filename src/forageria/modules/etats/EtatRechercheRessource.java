@@ -52,6 +52,7 @@ public class EtatRechercheRessource extends Etat {
     public void action() {
         int distanceMin;
         Case arbreLePlusProche;
+        TypeRessource ressourceATrouver;
 
         Carte carte = getMemoire().getCarte();
         AlgorithmeCalculDistance algorithme = new Dijkstra(carte);
@@ -60,11 +61,16 @@ public class EtatRechercheRessource extends Etat {
         distanceMin = 1;
         arbreLePlusProche = null;
 
-        for (Case C : carte.getCases()){
-            if((C.getRessource() != null) && (C.getRessource().getType() == TypeRessource.ARBRE)) {
-                if(arbreLePlusProche == null || algorithme.getDistance(C) < distanceMin){
-                    distanceMin = algorithme.getDistance(C);
-                    arbreLePlusProche = C;
+        // Recherche du plus court chemin pour chaque ressources qu'on cherche.
+        for (TypeRessource type : ressourcesRecherchees) {
+            ressourceATrouver = type;
+
+            for (Case C : carte.getCases()){
+                if((C.getRessource() != null) && (C.getRessource().getType() == ressourceATrouver)) {
+                    if(arbreLePlusProche == null || algorithme.getDistance(C) < distanceMin){
+                        distanceMin = algorithme.getDistance(C);
+                        arbreLePlusProche = C;
+                    }
                 }
             }
         }
