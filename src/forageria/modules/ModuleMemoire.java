@@ -7,6 +7,7 @@ import forageria.metier.actions.TypeAction;
 import forageria.metier.carte.Carte;
 import forageria.metier.carte.Coordonnee;
 import forageria.metier.carte.cases.Case;
+import forageria.metier.carte.ressources.Ressource;
 import forageria.metier.carte.ressources.TypeMateriau;
 
 import java.util.HashMap;
@@ -151,5 +152,16 @@ public class ModuleMemoire extends Module  {
                 caseDestination.setRessource(null) ;
             }
         }
+    }
+
+    /**
+     * Pour chaque loot de la ressource, on en ajoute un à l'inventaire.
+     *
+     *
+     * @param ressource Ressource dont on récupère le loot.
+     */
+    private void recolter(Ressource ressource){
+        for (TypeMateriau TM : ressource.getLoot())
+            inventaire.put(TM, inventaire.get(TM) + 1);
     }
 }
