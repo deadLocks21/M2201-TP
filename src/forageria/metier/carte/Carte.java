@@ -109,6 +109,37 @@ public class Carte {
     }
 
     /**
+     * Permet de vérifier si une zone est libre.
+     *
+     *
+     * @param coinBasGauche Coin en bas à gauche de la zone à vérifier (TP08 Q21)
+     *
+     * @return TRUE si la zone est libre.
+     */
+    public boolean estZoneValide(Case coinBasGauche){
+        boolean ret = true;
+
+        // Coordonées de la case.
+        int l = coinBasGauche.getCoordonnee().getLigne();
+        int c = coinBasGauche.getCoordonnee().getColonne();
+
+        // Coordonnées case coin haut gauche;
+        int x1 = l - 1;
+        int y1 = c - 2;
+
+        // Coordonnées case coin bas droite.
+        int x2 = l + 2;
+        int y2 = c + 1;
+
+        for (int x = x1; x <= x2; x++)
+            for (int y = y1; y <= y2; y++)
+                if (cases.get(new Coordonnee(x, y)).getType() != HERBE)
+                    ret = false;
+
+        return ret;
+    }
+
+    /**
      * Méthode permettant d'ajouter une case à la liste des cases.
      *
      *
