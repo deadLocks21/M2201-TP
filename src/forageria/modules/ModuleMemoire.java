@@ -155,6 +155,18 @@ public class ModuleMemoire extends Module  {
     }
 
     /**
+     * Permet de récupérer la quantité d'un matériaux de l'inventaire.
+     *
+     *
+     * @param type Type de la quantité du matos à récup.
+     *
+     * @return Quantité du matos à récup.
+     */
+    public int getQuantiteMateriel(TypeMateriau type){
+        return inventaire.get(type);
+    }
+
+    /**
      * Pour chaque loot de la ressource, on en ajoute un à l'inventaire.
      *
      *
