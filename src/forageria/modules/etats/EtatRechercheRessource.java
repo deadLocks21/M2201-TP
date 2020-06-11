@@ -18,15 +18,15 @@ public class EtatRechercheRessource extends Etat {
     /**
      * Permet de stocker le chemin jusqu'à un bois.
      */
-    ArrayList<TypeMouvement> chemin;
+    private ArrayList<TypeMouvement> chemin;
     /**
      * Ressource à collecter.
      */
-    Ressource ressource;
+    private Ressource ressource;
     /**
      * Liste des ressources à rechercher.
      */
-    ArrayList<TypeRessource> ressourcesRecherchees;
+    private ArrayList<TypeRessource> ressourcesRecherchees;
 
     /**
      * Constructeur de l'EtatRechercheRessource.

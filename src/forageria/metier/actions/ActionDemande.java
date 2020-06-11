@@ -11,7 +11,7 @@ public class ActionDemande extends Action {
     /**
      * Message correspondant à l'action.
      */
-    String message;
+    private String message;
 
 
     /**

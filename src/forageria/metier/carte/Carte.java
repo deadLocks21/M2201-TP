@@ -21,7 +21,7 @@ public class Carte {
     /**
      * Variable permettant de stocker les cases de notre jeu.
      */
-    public Map<Coordonnee,Case> cases;
+    private Map<Coordonnee,Case> cases;
 
 
     /**

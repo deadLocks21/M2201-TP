@@ -12,7 +12,6 @@ import java.net.Socket;
  * @author Matthieu
  */
 public class ModuleCommunication extends Module {
-
     private Socket socket;
     private BufferedReader fluxEntrant;
     private PrintWriter fluxSortant;

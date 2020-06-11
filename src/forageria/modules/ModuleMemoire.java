@@ -23,23 +23,23 @@ public class ModuleMemoire extends Module  {
     /**
      * Stocke la carte du jeu.
      */
-    Carte carte;
+    private Carte carte;
     /**
      * Stocke notre joueur.
      */
-    Joueur joueur;
+    private Joueur joueur;
     /**
      * Durée de validité de la carte avant de la recharger.
      */
-    int dureeValiditeCarte;
+    private int dureeValiditeCarte;
     /**
      * Représente l'inventaire du joueur.
      */
-    HashMap<TypeMateriau,Integer> inventaire;
+    private HashMap<TypeMateriau,Integer> inventaire;
     /**
      * Stocke l'emplacement du fourneau.
      */
-    Coordonnee siteFourneau;  // TODO Initiliser.
+    private Coordonnee siteFourneau;
 
 
     /**
@@ -55,6 +55,7 @@ public class ModuleMemoire extends Module  {
         joueur = null;
         dureeValiditeCarte = 0;
         inventaire = new HashMap<>();
+        siteFourneau = new Coordonnee(-1, -1);
 
         // Initialisation de toutes les valeurs possibles de inventaire.
         for (TypeMateriau TM : TypeMateriau.values()) {

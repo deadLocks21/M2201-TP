@@ -8,7 +8,7 @@ import static forageria.metier.actions.TypeAction.COLLECTE;
  * Action de collecter une ressource.
  */
 public class ActionCollecte extends Action {
-    TypeMouvement mouvement;
+    private TypeMouvement mouvement;
 
     public ActionCollecte(TypeMouvement direction){
         mouvement = direction;

@@ -14,11 +14,11 @@ public class EtatCollecter extends Etat {
     /**
      * Permet de stocker le chemin jusqu'à une ressource.
      */
-    ArrayList<TypeMouvement> chemin;
+    private ArrayList<TypeMouvement> chemin;
     /**
      * Ressource à collecter.
      */
-    Ressource ressource;
+    private Ressource ressource;
 
     /**
      * Constructeur de l'EtatCollecter.

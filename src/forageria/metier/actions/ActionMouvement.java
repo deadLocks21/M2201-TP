@@ -10,7 +10,7 @@ public class ActionMouvement extends Action {
     /**
      * Mouvement dont on a besoin.
      */
-    TypeMouvement typeMouvement;
+    private TypeMouvement typeMouvement;
 
 
     /**

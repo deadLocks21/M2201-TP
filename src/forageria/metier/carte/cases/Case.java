@@ -18,8 +18,6 @@ public abstract class Case {
      * Stocke la ressource qu'est la case.
      */
     private Ressource ressource;
-
-
     /**
      * Attribut permettant de trouver les voisins de la case.
      */

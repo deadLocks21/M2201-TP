@@ -30,11 +30,11 @@ public class ModuleDecision extends Module {
     /**
      * Liste des actions à effectuer.
      */
-    public ArrayList<Action> listeDesActionsARealiser ;
+    private  ArrayList<Action> listeDesActionsARealiser ;
     /**
      * Etat dans lequel se trouve notre automate.
      */
-    private Etat etatCourant;
+    private  Etat etatCourant;
     /**
      * Stocke la réponse pourle serveur.
      */
