@@ -18,7 +18,7 @@ public class EtatInnocupe extends Etat {
 
     @Override
     public Etat transition() {
-        return new EtatRechercheBois(getModule());
+        return new EtatRechercheRessource(getModule());
     }
 
     @Override

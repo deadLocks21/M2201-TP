@@ -12,9 +12,9 @@ import forageria.modules.ModuleDecision;
 import java.util.ArrayList;
 
 /**
- * Etat qui recherche l'arbre le plus proche.
+ * Etat qui recherche les ressources les plus proches.
  */
-public class EtatRechercheBois extends Etat {
+public class EtatRechercheRessource extends Etat {
     /**
      * Permet de stocker le chemin jusqu'à un bois.
      */
@@ -25,11 +25,11 @@ public class EtatRechercheBois extends Etat {
     Ressource ressource;
 
     /**
-     * Constructeur de l'EtatRechercheBois.
+     * Constructeur de l'EtatRechercheRessource.
      *
      * @param module Valeur de la variable module.
      */
-    public EtatRechercheBois(ModuleDecision module) {
+    public EtatRechercheRessource(ModuleDecision module) {
         super(module);
 
         chemin = new ArrayList<>();
