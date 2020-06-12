@@ -117,7 +117,7 @@ public class ModuleDecision extends Module {
             Coordonnee coordonneDestination = this.getIA().getModuleMemoire().getCaseJoueur().getCoordonnee().getVoisin(action.getDirection()) ;
             Case caseDestination = this.getIA().getModuleMemoire().getCarte().getCase(coordonneDestination) ;
 
-            if (!caseDestination.estVide())
+            if (!caseDestination.estVide() && caseDestination.getBatiment() == null)
                 for (int i = 0 ; i < caseDestination.getRessource().nombreCoupsPioche() ; i++)
                     this.listeDesActionsARealiser.add(0, FabriqueAction.creerCollecte(action.getDirection()));
         }

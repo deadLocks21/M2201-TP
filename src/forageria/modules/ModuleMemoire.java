@@ -177,7 +177,7 @@ public class ModuleMemoire extends Module  {
         }
         else if(action.getType() == COLLECTE) {
             Case caseDestination = this.carte.getCase(this.getCaseJoueur().getCoordonnee().getVoisin(action.getDirection())) ;
-            if(!caseDestination.estVide()) {
+            if(!caseDestination.estVide() && caseDestination.getBatiment() == null) {
                 recolter(caseDestination.getRessource());
                 caseDestination.setRessource(null) ;
             }

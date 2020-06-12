@@ -122,7 +122,7 @@ public abstract class Case {
      * @return TRUE | FALSE
      */
     public boolean estVide(){
-        return ressource == null;
+        return ressource == null && batiment == null;
     }
 
     /**
