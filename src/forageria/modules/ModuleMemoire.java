@@ -10,6 +10,7 @@ import forageria.metier.carte.cases.Case;
 import forageria.metier.carte.ressources.Ressource;
 import forageria.metier.carte.ressources.TypeMateriau;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import static forageria.metier.actions.TypeAction.COLLECTE;
@@ -36,12 +37,14 @@ public class ModuleMemoire extends Module  {
      * Représente l'inventaire du joueur.
      */
     private HashMap<TypeMateriau,Integer> inventaire;
-
-
     /**
      * Stocke l'emplacement du fourneau.
      */
     private Coordonnee siteFourneau;
+    /**
+     * Stocke les coordonnées des fourneaux.
+     */
+    private ArrayList<Coordonnee> fourneaux;
 
 
     /**
@@ -94,6 +97,16 @@ public class ModuleMemoire extends Module  {
      */
     public Coordonnee getSiteFourneau() {
         return siteFourneau;
+    }
+
+    /**
+     * Assesseur de la variable fourneaux.
+     *
+     *
+     * @return Valeur de fourneaux.
+     */
+    public ArrayList<Coordonnee> getFourneaux() {
+        return fourneaux;
     }
 
     /**
