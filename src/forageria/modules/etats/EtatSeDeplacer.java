@@ -1,6 +1,7 @@
 package forageria.modules.etats;
 
 import forageria.metier.TypeMouvement;
+import forageria.metier.actions.FabriqueAction;
 import forageria.modules.ModuleDecision;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class EtatSeDeplacer extends Etat {
 
     @Override
     public void action() {
-
+        for (TypeMouvement mouvement : chemin)
+            getModule().ajouterAction(FabriqueAction.creerMouvement(mouvement));
     }
 }
