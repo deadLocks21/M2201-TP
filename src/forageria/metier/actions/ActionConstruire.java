@@ -34,16 +34,16 @@ public class ActionConstruire extends Action {
 
     @Override
     public String getMessage() {
-        return null;
+        return "BUILD|" + mouvement + "|" + batiment;
     }
 
     @Override
     public TypeAction getType() {
-        return null;
+        return CONSTRUCTION;
     }
 
     @Override
     public TypeMouvement getDirection() {
-        return null;
+        return mouvement;
     }
 }
