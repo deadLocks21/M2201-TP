@@ -21,7 +21,7 @@ public class EtatTrouverSiteFourneau extends Etat {
      * Algo de Dijsktra.
      */
     private Dijkstra dijkstra;
-    // TODO Initialiser
+
 
     /**
      * Constructeur d'un EtatTrouverSiteFourneau.
@@ -30,6 +30,9 @@ public class EtatTrouverSiteFourneau extends Etat {
      */
     public EtatTrouverSiteFourneau(ModuleDecision module) {
         super(module);
+
+        chemin = null;
+        dijkstra = null;
     }
 
 
@@ -62,7 +65,9 @@ public class EtatTrouverSiteFourneau extends Etat {
 
     @Override
     public Etat transition() {
-        return null;
+        return chemin == null ?
+                new EtatAttendre(getModule()) :
+                new EtatSeDeplacer(getModule(), chemin);
     }
 
     @Override
