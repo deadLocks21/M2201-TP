@@ -52,7 +52,7 @@ public class Dijkstra extends AlgorithmeCalculDistance {
     private int coutMouvementVers(Case destination){
         int ret = infini;
 
-        if(destination.getType() != TypeCase.EAU){
+        if(destination.getType() != TypeCase.EAU && destination.getBatiment() == null){
             if(destination.getRessource() != null)
                 ret = destination.getRessource().nombreCoupsPioche() + 1;
             else
