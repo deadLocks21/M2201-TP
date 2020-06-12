@@ -2,6 +2,7 @@ package forageria.modules.etats;
 
 import forageria.metier.TypeMouvement;
 import forageria.metier.algorithmes.Dijkstra;
+import forageria.metier.carte.Coordonnee;
 import forageria.metier.carte.cases.Case;
 import forageria.modules.ModuleDecision;
 
@@ -32,12 +33,29 @@ public class EtatTrouverSiteFourneau extends Etat {
 
 
     /**
-     * TODO Doc
-     * @param coinBasGauche
-     * @return
+     * Permet de connaitre le cout pour aller et déblayer une zone.
+     *
+     *
+     * @param coinBasGauche  Case qui sert de référence à la zone.
+     *
+     * @return Cout pour s'y rendre et la déblayer.
      */
     private int coutZone(Case coinBasGauche){
-        return 0; // TODO Implémenter.
+        int cout = dijkstra.getDistance(coinBasGauche);
+
+        for(int i=0; i<2; i++) {
+            for(int j=0; j<2; j++) {
+                if(i !=0 || j !=0) {
+                    Coordonnee coordonnee = coinBasGauche.getCoordonnee();
+                    Case position = this.getMemoire().getCarte().getCase(new Coordonnee(coordonnee.getLigne()-i,coordonnee.getColonne()+j));
+                    if(position.getRessource() != null) {
+                        cout += position.getRessource().nombreCoupsPioche();
+                    }
+                }
+            }
+        }
+
+        return cout;
     }
 
 
