@@ -15,10 +15,10 @@ public class EtatConstruireFourneau extends Etat {
         super(module);
     }
 
-    
+
     @Override
     public Etat transition() {
-        return null;
+        return new EtatReflexion(getModule());
     }
 
     @Override
