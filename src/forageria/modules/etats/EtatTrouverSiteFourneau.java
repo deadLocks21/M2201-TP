@@ -2,6 +2,7 @@ package forageria.modules.etats;
 
 import forageria.metier.TypeMouvement;
 import forageria.metier.algorithmes.Dijkstra;
+import forageria.metier.carte.Carte;
 import forageria.metier.carte.Coordonnee;
 import forageria.metier.carte.cases.Case;
 import forageria.modules.ModuleDecision;
@@ -66,6 +67,25 @@ public class EtatTrouverSiteFourneau extends Etat {
 
     @Override
     public void action() {
+        Carte carte = getMemoire().getCarte();
+        int coutMin = 1;
+        Case zoneRetenue = null;
 
+        dijkstra = new Dijkstra(carte);
+        dijkstra.calculerDistancesDepuis(getMemoire().getCaseJoueur());
+
+        for (Case c : carte.getCases()){
+            if (carte.estZoneValide(c)){
+                int cout = coutZone(c);
+
+                if (zoneRetenue == null || cout < coutMin){
+                    coutMin = cout;
+                    zoneRetenue = c;
+                }
+            }
+        }
+
+        chemin = dijkstra.getChemin(zoneRetenue);
+        getMemoire().setSiteFourneau(zoneRetenue.getCoordonnee());
     }
 }
