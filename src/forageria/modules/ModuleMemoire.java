@@ -6,6 +6,7 @@ import forageria.metier.actions.Action;
 import forageria.metier.actions.TypeAction;
 import forageria.metier.carte.Carte;
 import forageria.metier.carte.Coordonnee;
+import forageria.metier.carte.TypeBatiment;
 import forageria.metier.carte.cases.Case;
 import forageria.metier.carte.ressources.Ressource;
 import forageria.metier.carte.ressources.TypeMateriau;
@@ -139,6 +140,9 @@ public class ModuleMemoire extends Module  {
     public void genererCarte(String messageRecu){
         carte = new Carte(messageRecu);
         dureeValiditeCarte = 2;
+
+        for (Coordonnee coo : this.fourneaux)
+            carte.getCase(coo).setBatiment(TypeBatiment.FURNACE);
 
         // Décommenter pour afficher la carte lors de sa construction
         // carte.afficheConsole();
