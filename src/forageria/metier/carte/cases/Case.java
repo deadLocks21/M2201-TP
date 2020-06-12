@@ -2,6 +2,7 @@ package forageria.metier.carte.cases;
 
 import forageria.metier.TypeMouvement;
 import forageria.metier.carte.Coordonnee;
+import forageria.metier.carte.TypeBatiment;
 import forageria.metier.carte.ressources.Ressource;
 
 import java.util.ArrayList;
@@ -22,6 +23,10 @@ public abstract class Case {
      * Attribut permettant de trouver les voisins de la case.
      */
     private ArrayList<Case> voisins;
+    /**
+     * Permet de savoir si un batiment se trouve sur la case.
+     */
+    private TypeBatiment batiment;
 
 
     /**
@@ -33,6 +38,7 @@ public abstract class Case {
     public Case(Coordonnee coordonnee){
         this.coordonnee = coordonnee;
         this.voisins = new ArrayList<>();
+        batiment = null;
     }
 
 
@@ -58,6 +64,26 @@ public abstract class Case {
     }
 
     /**
+     * Assesseur de la variable voisins.
+     *
+     *
+     * @return Variable voisins sour la forme d'une ArrayList
+     */
+    public ArrayList<Case> getVoisins() {
+        return voisins;
+    }
+
+    /**
+     * Assesseur de la variable batiment.
+     *
+     *
+     * @return Valeur de batiment.
+     */
+    public TypeBatiment getBatiment() {
+        return batiment;
+    }
+
+    /**
      * Mutateur de la variable ressource.
      *
      *
@@ -68,13 +94,13 @@ public abstract class Case {
     }
 
     /**
-     * Assesseur de la variable voisins.
+     * Mutateur de batiment.
      *
      *
-     * @return Variable voisins sour la forme d'une ArrayList
+     * @param batiment Nouvelle valeur de batiment.
      */
-    public ArrayList<Case> getVoisins() {
-        return voisins;
+    public void setBatiment(TypeBatiment batiment) {
+        this.batiment = batiment;
     }
 
     /**
