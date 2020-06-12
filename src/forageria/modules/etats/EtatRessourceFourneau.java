@@ -28,7 +28,7 @@ public class EtatRessourceFourneau extends Etat {
         return getMemoire().getQuantiteMateriel(TypeMateriau.PIERRE) < 10 ?
                 new EtatRechercheRessource(
                         getModule(), ressources) :
-                new EtatAttendre(getModule());
+                new EtatSiteFourneau(getModule());
     }
 
     @Override
