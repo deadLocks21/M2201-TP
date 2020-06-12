@@ -16,6 +16,7 @@ import java.util.HashMap;
 
 import static forageria.metier.actions.TypeAction.COLLECTE;
 import static forageria.metier.actions.TypeAction.MOUVEMENT;
+import static forageria.metier.carte.ressources.TypeMateriau.PIERRE;
 
 /**
  * Module en charge de la mémorisation et de la restitution des informations obtenues
@@ -62,6 +63,7 @@ public class ModuleMemoire extends Module  {
         dureeValiditeCarte = 0;
         inventaire = new HashMap<>();
         siteFourneau = new Coordonnee(-1, -1);
+        fourneaux = new ArrayList<>();
 
         // Initialisation de toutes les valeurs possibles de inventaire.
         for (TypeMateriau TM : TypeMateriau.values()) {
@@ -188,16 +190,28 @@ public class ModuleMemoire extends Module  {
      * @param action Action que l'on effectue.
      */
     public void effectuerAction(Action action){
-        if(action.getType() == MOUVEMENT) {
-            joueur.deplacer(action.getDirection()) ;
-            dureeValiditeCarte --;
-        }
-        else if(action.getType() == COLLECTE) {
-            Case caseDestination = this.carte.getCase(this.getCaseJoueur().getCoordonnee().getVoisin(action.getDirection())) ;
-            if(!caseDestination.estVide() && caseDestination.getBatiment() == null) {
-                recolter(caseDestination.getRessource());
-                caseDestination.setRessource(null) ;
-            }
+        switch (action.getType()){
+            case MOUVEMENT:
+                joueur.deplacer(action.getDirection()) ;
+                dureeValiditeCarte --;
+                break;
+            case COLLECTE:
+                Case caseDestination = this.carte.getCase(this.getCaseJoueur().getCoordonnee().getVoisin(action.getDirection())) ;
+                if(!caseDestination.estVide() && caseDestination.getBatiment() == null) {
+                    recolter(caseDestination.getRessource());
+                    caseDestination.setRessource(null) ;
+                }
+                break;
+            case CONSTRUCTION:
+                int c = joueur.getCoordonnee().getColonne();
+                int l = joueur.getCoordonnee().getLigne();
+                
+                for (int x = c+1; x < c+3; x ++)
+                    for(int y = l - 1; y < l+1; y ++)
+                        fourneaux.add(new Coordonnee(y, x));
+
+                inventaire.put(PIERRE, inventaire.get(PIERRE) - 10);
+                break;
         }
     }
 
