@@ -28,7 +28,7 @@ public class EtatSeDeplacer extends Etat {
 
     @Override
     public Etat transition() {
-        return null;
+        return new EtatReflexion(getModule());
     }
 
     @Override
