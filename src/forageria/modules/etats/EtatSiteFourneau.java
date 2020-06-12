@@ -20,7 +20,7 @@ public class EtatSiteFourneau extends Etat {
     public Etat transition() {
         return getMemoire().getSiteFourneau().equals(new Coordonnee(-1, -1)) ?
                 new EtatTrouverSiteFourneau(getModule()) :
-                new EtatAttendre(getModule());
+                new EtatConstruireFourneau(getModule());
     }
 
     @Override
