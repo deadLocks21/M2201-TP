@@ -1,10 +1,13 @@
 package forageria.modules.etats;
 
 import forageria.metier.carte.Coordonnee;
+import forageria.metier.carte.ressources.TypeMateriau;
 import forageria.metier.carte.ressources.TypeRessource;
 import forageria.modules.ModuleDecision;
 
 import java.util.ArrayList;
+
+import static forageria.metier.carte.ressources.TypeMateriau.CHARBON;
 
 /**
  * Etat qui ne fait rien.
@@ -29,7 +32,7 @@ public class EtatInnocupe extends Etat {
 
         return getMemoire().getFourneaux().size() == 0 ?
                 new EtatRessourceFourneau(getModule()) :
-                new EtatRechercheRessource(getModule(), ressources);
+                new EtatCrafterRessource(getModule(), CHARBON);
     }
 
     @Override
