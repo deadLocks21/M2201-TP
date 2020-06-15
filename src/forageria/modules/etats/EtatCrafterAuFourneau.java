@@ -63,16 +63,12 @@ public class EtatCrafterAuFourneau extends Etat {
 
         //On s'y rend (on enlève le dernier mouvement pour le replacer par CRAFT)
         ArrayList<TypeMouvement> chemin = dijkstra.getChemin(fourneauLePlusProche);
-        TypeMouvement dernierMouvement = RIGHT;
+        TypeMouvement dernierMouvement = chemin.get(chemin.size() - 1);
+        chemin.remove(chemin.size() - 1);
 
-        if (chemin.size() > 0) {
-            dernierMouvement = chemin.get(chemin.size() - 1);
-            chemin.remove(chemin.size() - 1);
-
-            for(TypeMouvement mouvement : chemin) {
-                Action action = FabriqueAction.creerMouvement(mouvement);
-                this.getModule().ajouterAction(action);
-            }
+        for(TypeMouvement mouvement : chemin) {
+            Action action = FabriqueAction.creerMouvement(mouvement);
+            this.getModule().ajouterAction(action);
         }
 
         Action action = FabriqueAction.creerCraft(dernierMouvement,materiau);
