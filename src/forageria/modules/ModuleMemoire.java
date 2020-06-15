@@ -255,4 +255,15 @@ public class ModuleMemoire extends Module  {
         for (TypeMateriau TM : ressource.getLoot())
             inventaire.put(TM, inventaire.get(TM) + 1);
     }
+
+    /**
+     * Incrémente les variables qui prennent en compte le timer de création de ressources.
+     *
+     *
+     * @param materiau Matériau à construire.
+     */
+    private void ajouterCraft(TypeMateriau materiau){
+        timerCraftFourneau += 14;
+        listeCraftEnCoursFourneau.add(materiau);
+    }
 }
