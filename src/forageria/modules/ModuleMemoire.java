@@ -268,4 +268,19 @@ public class ModuleMemoire extends Module  {
         timerCraftFourneau += 14;
         listeCraftEnCoursFourneau.add(materiau);
     }
+
+    /**
+     * Permet d'avancer le timer.
+     */
+    private void avancerTimerCraf() {
+        if (timerCraftFourneau > 0){
+            timerCraftFourneau --;
+
+            if (timerCraftFourneau % 14 == 0){
+                TypeMateriau m = listeCraftEnCoursFourneau.get(0);
+                inventaire.put(m, inventaire.get(m) + 1);
+                listeCraftEnCoursFourneau.remove(0);
+            }
+        }
+    }
 }
