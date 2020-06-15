@@ -34,7 +34,26 @@ public class ActionCraft extends Action {
 
     @Override
     public String getMessage() {
-        return "CRAFT|" + typeMouvement + "|" + materiau;
+        String m;
+
+        switch (materiau) {
+            case CHARBON:
+                m = "COAL";
+                break;
+            case LINGOTFER:
+                m = "IRONINGOT";
+                break;
+            case LINGOTOR:
+                m = "GOLDINGOT";
+                break;
+            case PIECE:
+                m = "COIN";
+                break;
+            default:
+                m = "";
+        }
+
+        return "CRAFT|" + typeMouvement + "|" + m;
     }
 
     @Override
