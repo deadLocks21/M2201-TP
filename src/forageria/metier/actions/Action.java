@@ -1,6 +1,7 @@
 package forageria.metier.actions;
 
 import forageria.metier.TypeMouvement;
+import forageria.metier.carte.ressources.TypeMateriau;
 
 /**
  * Classe abstraite d'une action.
@@ -29,4 +30,12 @@ public abstract class Action {
      * @return TypeMouvement représentant la direction.
      */
     public abstract TypeMouvement getDirection() ;
+
+    /**
+     * Récupérer le matériau.
+     *
+     *
+     * @return Matériau de la classe.
+     */
+    public abstract TypeMateriau getMateriau() ;
 }
