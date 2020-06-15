@@ -48,6 +48,14 @@ public class ModuleMemoire extends Module  {
      * Stocke les coordonnées des fourneaux.
      */
     private ArrayList<Coordonnee> fourneaux;
+    /**
+     * Stocke le temps avant de pouvoir récupérer une ressource.
+     */
+    private int timerCraftFourneau;
+    /**
+     * Liste des matériaux qui sont en train de se crafter.
+     */
+    private ArrayList<TypeMateriau> listeCraftEnCoursFourneau;
 
 
     /**
@@ -65,6 +73,8 @@ public class ModuleMemoire extends Module  {
         inventaire = new HashMap<>();
         siteFourneau = new Coordonnee(-1, -1);
         fourneaux = new ArrayList<>();
+        timerCraftFourneau = 0;
+        listeCraftEnCoursFourneau = new ArrayList<>();
 
         // Initialisation de toutes les valeurs possibles de inventaire.
         for (TypeMateriau TM : TypeMateriau.values()) {
