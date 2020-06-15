@@ -42,6 +42,16 @@ public class Dijkstra extends AlgorithmeCalculDistance {
 
 
     /**
+     * Assesseur de infini.
+     *
+     *
+     * @return Valeur de infini.
+     */
+    public int getInfini() {
+        return infini;
+    }
+
+    /**
      * Cout du mouvement pour aller vers une case.
      *
      *
