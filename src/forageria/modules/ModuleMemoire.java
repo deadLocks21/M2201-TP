@@ -201,6 +201,8 @@ public class ModuleMemoire extends Module  {
      * @param action Action que l'on effectue.
      */
     public void effectuerAction(Action action){
+        avancerTimerCraf();
+
         switch (action.getType()){
             case MOUVEMENT:
                 joueur.deplacer(action.getDirection()) ;
