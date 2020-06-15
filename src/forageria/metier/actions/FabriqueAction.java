@@ -2,6 +2,7 @@ package forageria.metier.actions;
 
 import forageria.metier.TypeMouvement;
 import forageria.metier.carte.TypeBatiment;
+import forageria.metier.carte.ressources.TypeMateriau;
 
 /**
  * Fabrique à actions.
@@ -59,5 +60,18 @@ public class FabriqueAction {
      */
     public static Action creerConstruire(TypeMouvement mouvement, TypeBatiment batiment){
         return new ActionConstruire(mouvement, batiment);
+    }
+
+    /**
+     * Permet de créer une action de craft.
+     *
+     *
+     * @param mouvement Sens ou se trouve le batiment.
+     * @param materiau  Matériau à crafter.
+     *
+     * @return ActionCraft qui correspond au paramètres.
+     */
+    public static Action creerCraft(TypeMouvement mouvement, TypeMateriau materiau){
+        return new ActionCraft(mouvement, materiau);
     }
 }
