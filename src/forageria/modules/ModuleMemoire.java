@@ -16,6 +16,7 @@ import java.util.HashMap;
 
 import static forageria.metier.actions.TypeAction.COLLECTE;
 import static forageria.metier.actions.TypeAction.MOUVEMENT;
+import static forageria.metier.carte.ressources.TypeMateriau.BOIS;
 import static forageria.metier.carte.ressources.TypeMateriau.PIERRE;
 
 /**
@@ -205,12 +206,19 @@ public class ModuleMemoire extends Module  {
             case CONSTRUCTION:
                 int c = joueur.getCoordonnee().getColonne();
                 int l = joueur.getCoordonnee().getLigne();
-                
+
                 for (int x = c+1; x < c+3; x ++)
                     for(int y = l - 1; y < l+1; y ++)
                         fourneaux.add(new Coordonnee(y, x));
 
                 inventaire.put(PIERRE, inventaire.get(PIERRE) - 10);
+                break;
+            case CRAFT:
+                switch (action.getMateriau()){
+                    case CHARBON:
+                        inventaire.put(BOIS, inventaire.get(BOIS) - 2);
+                        break;
+                }
                 break;
         }
     }
