@@ -65,4 +65,9 @@ public class ActionCraft extends Action {
     public TypeMouvement getDirection() {
         return typeMouvement;
     }
+
+    @Override
+    public TypeMateriau getMateriau() {
+        return materiau;
+    }
 }

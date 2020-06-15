@@ -1,6 +1,7 @@
 package forageria.metier.actions;
 
 import forageria.metier.TypeMouvement;
+import forageria.metier.carte.ressources.TypeMateriau;
 
 import static forageria.metier.actions.TypeAction.DEMANDE;
 
@@ -37,6 +38,11 @@ public class ActionDemande extends Action {
 
     @Override
     public TypeMouvement getDirection() {
+        return null;
+    }
+
+    @Override
+    public TypeMateriau getMateriau() {
         return null;
     }
 }
