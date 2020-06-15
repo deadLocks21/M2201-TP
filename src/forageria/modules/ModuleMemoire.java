@@ -229,6 +229,8 @@ public class ModuleMemoire extends Module  {
                         inventaire.put(BOIS, inventaire.get(BOIS) - 2);
                         break;
                 }
+
+                ajouterCraft(action.getMateriau());
                 break;
         }
     }
