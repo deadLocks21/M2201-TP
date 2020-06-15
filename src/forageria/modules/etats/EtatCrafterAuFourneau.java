@@ -5,6 +5,7 @@ import forageria.metier.actions.Action;
 import forageria.metier.actions.FabriqueAction;
 import forageria.metier.algorithmes.AlgorithmeCalculDistance;
 import forageria.metier.algorithmes.Dijkstra;
+import forageria.metier.algorithmes.DijkstraBatiment;
 import forageria.metier.carte.Carte;
 import forageria.metier.carte.Coordonnee;
 import forageria.metier.carte.cases.Case;
@@ -12,6 +13,8 @@ import forageria.metier.carte.ressources.TypeMateriau;
 import forageria.modules.ModuleDecision;
 
 import java.util.ArrayList;
+
+import static forageria.metier.carte.TypeBatiment.FURNACE;
 
 /**
  * Etat permettant de crafter dans un fourneau.
@@ -43,7 +46,7 @@ public class EtatCrafterAuFourneau extends Etat {
     public void action() {
         //On récupère la carte et on lance Dijkstra
         Carte carte = this.getMemoire().getCarte();
-        AlgorithmeCalculDistance dijkstra = new Dijkstra(carte);
+        AlgorithmeCalculDistance dijkstra = new DijkstraBatiment(carte, FURNACE);
         dijkstra.calculerDistancesDepuis(this.getMemoire().getCaseJoueur());
 
 
