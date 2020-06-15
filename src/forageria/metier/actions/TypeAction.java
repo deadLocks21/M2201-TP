@@ -4,5 +4,6 @@ public enum TypeAction {
     DEMANDE,
     MOUVEMENT,
     COLLECTE,
-    CONSTRUCTION
+    CONSTRUCTION,
+    CRAFT
 }
