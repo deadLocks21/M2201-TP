@@ -49,7 +49,7 @@ public class Dijkstra extends AlgorithmeCalculDistance {
      *
      * @return Cout pour se déplacer.
      */
-    private int coutMouvementVers(Case destination){
+    protected int coutMouvementVers(Case destination){
         int ret = infini;
 
         if(destination.getType() != TypeCase.EAU && destination.getBatiment() == null){
