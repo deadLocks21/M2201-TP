@@ -95,10 +95,13 @@ public class Coordonnee {
 
         if(dLigne < 0 && dColonne == 0)
             mvt = TypeMouvement.TOP;
+
         if(dLigne == 0 && dColonne > 0)
             mvt = TypeMouvement.RIGHT;
+
         if(dLigne > 0 && dColonne == 0)
             mvt = TypeMouvement.BOTTOM;
+
         if(dLigne == 0 && dColonne < 0)
             mvt = TypeMouvement.LEFT;
 
