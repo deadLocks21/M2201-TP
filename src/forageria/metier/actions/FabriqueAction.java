@@ -45,6 +45,14 @@ public class FabriqueAction {
         return actionDemande;
     }
 
+    /**
+     * Action de collecter une ressource.
+     *
+     *
+     * @param direction Sens ou l'on doit récolter.
+     *
+     * @return ActionCollecte correspondante
+     */
     public static Action creerCollecte(TypeMouvement direction){
         return new ActionCollecte(direction);
     }
