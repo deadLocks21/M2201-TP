@@ -6,6 +6,10 @@ import forageria.modules.ModuleDecision;
 
 import java.util.ArrayList;
 
+import static forageria.metier.carte.ressources.TypeMateriau.LINGOTFER;
+import static forageria.metier.carte.ressources.TypeMateriau.PIERRE;
+import static forageria.metier.carte.ressources.TypeRessource.ROCHER;
+
 /**
  * Etat cherchant les ressources pour construire un fourneau.
  */
@@ -19,16 +23,18 @@ public class EtatRessourceFourneau extends Etat {
         super(module);
     }
 
+
     @Override
     public Etat transition() {
+        Etat nouvelEtat = new EtatSiteFourneau(getModule());
+
         ArrayList<TypeRessource> ressources =  new ArrayList<>();
+        ressources.add(ROCHER);
 
-        ressources.add(TypeRessource.ROCHER);
+        if (getMemoire().getQuantiteMateriel(PIERRE) < 10)
+            nouvelEtat = new EtatRechercheRessource(getModule(), ressources);
 
-        return getMemoire().getQuantiteMateriel(TypeMateriau.PIERRE) < 10 ?
-                new EtatRechercheRessource(
-                        getModule(), ressources) :
-                new EtatSiteFourneau(getModule());
+        return nouvelEtat;
     }
 
     @Override
