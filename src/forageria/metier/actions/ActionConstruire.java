@@ -52,4 +52,9 @@ public class ActionConstruire extends Action {
     public TypeMateriau getMateriau() {
         return null;
     }
+
+    @Override
+    public TypeBatiment getBatiment() {
+        return batiment;
+    }
 }
