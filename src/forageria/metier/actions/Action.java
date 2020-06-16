@@ -1,6 +1,7 @@
 package forageria.metier.actions;
 
 import forageria.metier.TypeMouvement;
+import forageria.metier.carte.TypeBatiment;
 import forageria.metier.carte.ressources.TypeMateriau;
 
 /**
@@ -29,7 +30,7 @@ public abstract class Action {
      *
      * @return TypeMouvement représentant la direction.
      */
-    public abstract TypeMouvement getDirection() ;
+    public abstract TypeMouvement getDirection();
 
     /**
      * Récupérer le matériau.
@@ -37,5 +38,13 @@ public abstract class Action {
      *
      * @return Matériau de la classe.
      */
-    public abstract TypeMateriau getMateriau() ;
+    public abstract TypeMateriau getMateriau();
+
+    /**
+     * écupérer le batiment d'une action de construction.
+     *
+     *
+     * @return Batiment en question.
+     */
+    public abstract TypeBatiment getBatiment();
 }
