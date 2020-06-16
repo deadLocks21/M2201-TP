@@ -300,7 +300,7 @@ public class ModuleMemoire extends Module  {
                         break;
                     case FORGE:
                         inventaire.put(PIERRE, inventaire.get(PIERRE) - 4);
-                        inventaire.put(LINGOTFER, inventaire.get(LINGOTFER) - 10);
+                        inventaire.put(LINGOTFER, inventaire.get(LINGOTFER) - 4);
                         break;
                 }
 
