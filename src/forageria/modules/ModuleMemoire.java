@@ -367,6 +367,7 @@ public class ModuleMemoire extends Module  {
 
             if (timerCraftFourneau % 14 == 0){
                 m = listeCraftEnCoursFourneau.get(0);
+                inventaire.put(m, inventaire.get(m) + 1);
                 listeCraftEnCoursFourneau.remove(0);
             }
         }
@@ -376,11 +377,9 @@ public class ModuleMemoire extends Module  {
 
             if (timerCraftForge % 14 == 0){
                 m = listeCraftEnCoursForge.get(0);
+                inventaire.put(m, inventaire.get(m) + 1);
                 listeCraftEnCoursForge.remove(0);
             }
         }
-
-        if (timerCraftFourneau > 0 || timerCraftForge > 0)
-            inventaire.put(m, inventaire.get(m) + 1);
     }
 }

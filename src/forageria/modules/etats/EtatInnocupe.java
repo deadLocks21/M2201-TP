@@ -25,14 +25,17 @@ public class EtatInnocupe extends Etat {
 
     @Override
     public Etat transition() {
+        Etat nouvelEtat = new EtatCrafterRessource(getModule(), TypeMateriau.PIECE);;
+
         ArrayList<TypeRessource> ressources = new ArrayList<>();
 
-        ressources.add(TypeRessource.ARBRE);
-        ressources.add(TypeRessource.ROCHER);
+        if (getMemoire().getFourneaux().size() == 0)
+            nouvelEtat = new EtatRessourceFourneau(getModule());
 
-        return getMemoire().getFourneaux().size() == 0 ?
-                new EtatRessourceFourneau(getModule()) :
-                new EtatCrafterRessource(getModule(), CHARBON);
+        else if (getMemoire().getForges().size() == 0)
+            nouvelEtat = new EtatRessourceForge(getModule());
+
+        return nouvelEtat;
     }
 
     @Override
