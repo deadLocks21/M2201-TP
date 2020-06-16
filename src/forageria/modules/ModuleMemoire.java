@@ -16,8 +16,7 @@ import java.util.HashMap;
 
 import static forageria.metier.actions.TypeAction.COLLECTE;
 import static forageria.metier.actions.TypeAction.MOUVEMENT;
-import static forageria.metier.carte.ressources.TypeMateriau.BOIS;
-import static forageria.metier.carte.ressources.TypeMateriau.PIERRE;
+import static forageria.metier.carte.ressources.TypeMateriau.*;
 
 /**
  * Module en charge de la mémorisation et de la restitution des informations obtenues
@@ -45,17 +44,33 @@ public class ModuleMemoire extends Module  {
      */
     private Coordonnee siteFourneau;
     /**
-     * Stocke les coordonnées des fourneaux.
+     * Permet de savoir ou se situe la forge
+     */
+    private Coordonnee siteForge;
+    /**
+     * Stocke les coordonnées des cases du fourneau.
      */
     private ArrayList<Coordonnee> fourneaux;
     /**
-     * Stocke le temps avant de pouvoir récupérer une ressource.
+     * Stocke les coordonnées des cases de la forge.
+     */
+    private ArrayList<Coordonnee> forges;
+    /**
+     * Stocke le temps avant de pouvoir récupérer une ressource dans le fourneau.
      */
     private int timerCraftFourneau;
     /**
-     * Liste des matériaux qui sont en train de se crafter.
+     * Stocke le temps avant de pouvoir récupérer une ressource dans la forge.
+     */
+    private int timerCraftForge;
+    /**
+     * Liste des matériaux qui sont en train de se crafter dans le fourneau.
      */
     private ArrayList<TypeMateriau> listeCraftEnCoursFourneau;
+    /**
+     * Liste des matériaux qui sont en train de se crafter dans la forge.
+     */
+    private ArrayList<TypeMateriau> listeCraftEnCoursForge;
 
 
     /**
@@ -72,9 +87,13 @@ public class ModuleMemoire extends Module  {
         dureeValiditeCarte = 0;
         inventaire = new HashMap<>();
         siteFourneau = new Coordonnee(-1, -1);
+        siteForge = new Coordonnee(-1, -1);
         fourneaux = new ArrayList<>();
+        forges = new ArrayList<>();
         timerCraftFourneau = 0;
+        timerCraftForge = 0;
         listeCraftEnCoursFourneau = new ArrayList<>();
+        listeCraftEnCoursForge = new ArrayList<>();
 
         // Initialisation de toutes les valeurs possibles de inventaire.
         for (TypeMateriau TM : TypeMateriau.values()) {
@@ -114,6 +133,16 @@ public class ModuleMemoire extends Module  {
     }
 
     /**
+     * Assesseur de la variable siteForge.
+     *
+     *
+     * @return Valeur de siteForge.
+     */
+    public Coordonnee getSiteForge() {
+        return siteForge;
+    }
+
+    /**
      * Assesseur de la variable fourneaux.
      *
      *
@@ -121,6 +150,38 @@ public class ModuleMemoire extends Module  {
      */
     public ArrayList<Coordonnee> getFourneaux() {
         return fourneaux;
+    }
+
+    /**
+     * Assesseur de la variable forges.
+     *
+     *
+     * @return Valeur de forges.
+     */
+    public ArrayList<Coordonnee> getForges() {
+        return forges;
+    }
+
+    /**
+     * Permet de retourner les coordonnées du joueur.
+     *
+     *
+     * @return Coo du joueur.
+     */
+    public Case getCaseJoueur(){
+        return carte.getCase(joueur.getCoordonnee());
+    }
+
+    /**
+     * Permet de récupérer la quantité d'un matériaux de l'inventaire.
+     *
+     *
+     * @param type Type de la quantité du matos à récup.
+     *
+     * @return Quantité du matos à récup.
+     */
+    public int getQuantiteMateriel(TypeMateriau type){
+        return inventaire.get(type);
     }
 
     /**
@@ -133,6 +194,16 @@ public class ModuleMemoire extends Module  {
         this.siteFourneau = siteFourneau;
     }
 
+    /**
+     * Mutateur de la variable siteForge.
+     *
+     *
+     * @param siteForge Nouvelle valeur de siteForge.
+     */
+    public void setSiteForge(Coordonnee siteForge) {
+        this.siteForge = siteForge;
+    }
+
 
     /**
      * Vaut TRUE si la carte est settée.
@@ -142,6 +213,16 @@ public class ModuleMemoire extends Module  {
      */
     public boolean hasCarte(){
         return carte != null && dureeValiditeCarte > 0;
+    }
+
+    /**
+     * Vaut TRUE si le joueur est settée.
+     *
+     *
+     * @return TRUE | FALSE
+     */
+    public boolean hasJoueur(){
+        return joueur != null;
     }
 
     /**
@@ -157,18 +238,11 @@ public class ModuleMemoire extends Module  {
         for (Coordonnee coo : this.fourneaux)
             carte.getCase(coo).setBatiment(TypeBatiment.FURNACE);
 
+        for (Coordonnee coo : this.forges)
+            carte.getCase(coo).setBatiment(TypeBatiment.FORGE);
+
         // Décommenter pour afficher la carte lors de sa construction
         // carte.afficheConsole();
-    }
-
-    /**
-     * Vaut TRUE si le joueur est settée.
-     *
-     *
-     * @return TRUE | FALSE
-     */
-    public boolean hasJoueur(){
-        return joueur != null;
     }
 
     /**
@@ -182,16 +256,6 @@ public class ModuleMemoire extends Module  {
 
         Coordonnee cooJoueur = new Coordonnee(Integer.parseInt(coo[0]), Integer.parseInt(coo[1]));
         joueur = new Joueur(cooJoueur);
-    }
-
-    /**
-     * Permet de retourner les coordonnées du joueur.
-     *
-     *
-     * @return Coo du joueur.
-     */
-    public Case getCaseJoueur(){
-        return carte.getCase(joueur.getCoordonnee());
     }
 
     /**
@@ -219,34 +283,50 @@ public class ModuleMemoire extends Module  {
                 int c = joueur.getCoordonnee().getColonne();
                 int l = joueur.getCoordonnee().getLigne();
 
-                for (int x = c+1; x < c+3; x ++)
-                    for(int y = l - 1; y < l+1; y ++)
-                        fourneaux.add(new Coordonnee(y, x));
+                for (int x = c + 1; x < c + 3; x ++)
+                    for(int y = l - 1; y < l + 1; y ++)
+                        switch (action.getBatiment()){
+                            case FURNACE:
+                                fourneaux.add(new Coordonnee(y, x));
+                                break;
+                            case FORGE:
+                                forges.add(new Coordonnee(y, x));
+                                break;
+                        }
 
-                inventaire.put(PIERRE, inventaire.get(PIERRE) - 10);
+                switch (action.getBatiment()){
+                    case FURNACE:
+                        inventaire.put(PIERRE, inventaire.get(PIERRE) - 10);
+                        break;
+                    case FORGE:
+                        inventaire.put(PIERRE, inventaire.get(PIERRE) - 4);
+                        inventaire.put(LINGOTFER, inventaire.get(LINGOTFER) - 10);
+                        break;
+                }
+
+                dureeValiditeCarte = 0;
                 break;
             case CRAFT:
                 switch (action.getMateriau()){
                     case CHARBON:
                         inventaire.put(BOIS, inventaire.get(BOIS) - 2);
                         break;
+                    case LINGOTFER:
+                        inventaire.put(CHARBON, inventaire.get(CHARBON) - 1);
+                        inventaire.put(FER, inventaire.get(FER) - 2);
+                        break;
+                    case LINGOTOR:
+                        inventaire.put(CHARBON, inventaire.get(CHARBON) - 1);
+                        inventaire.put(OR, inventaire.get(OR) - 2);
+                        break;
+                    case OR:
+                        inventaire.put(LINGOTOR, inventaire.get(LINGOTOR) - 2);
+                        break;
                 }
 
                 ajouterCraft(action.getMateriau());
                 break;
         }
-    }
-
-    /**
-     * Permet de récupérer la quantité d'un matériaux de l'inventaire.
-     *
-     *
-     * @param type Type de la quantité du matos à récup.
-     *
-     * @return Quantité du matos à récup.
-     */
-    public int getQuantiteMateriel(TypeMateriau type){
-        return inventaire.get(type);
     }
 
     /**
@@ -267,22 +347,40 @@ public class ModuleMemoire extends Module  {
      * @param materiau Matériau à construire.
      */
     private void ajouterCraft(TypeMateriau materiau){
-        timerCraftFourneau += 14;
-        listeCraftEnCoursFourneau.add(materiau);
+        if (materiau == PIECE) {
+            timerCraftForge += 14;
+            listeCraftEnCoursForge.add(materiau);
+        } else {
+            timerCraftFourneau += 14;
+            listeCraftEnCoursFourneau.add(materiau);
+        }
     }
 
     /**
      * Permet d'avancer le timer.
      */
     private void avancerTimerCraf() {
+        TypeMateriau m = null;
+
         if (timerCraftFourneau > 0){
             timerCraftFourneau --;
 
             if (timerCraftFourneau % 14 == 0){
-                TypeMateriau m = listeCraftEnCoursFourneau.get(0);
-                inventaire.put(m, inventaire.get(m) + 1);
+                m = listeCraftEnCoursFourneau.get(0);
                 listeCraftEnCoursFourneau.remove(0);
             }
         }
+
+        if (timerCraftForge > 0){
+            timerCraftForge --;
+
+            if (timerCraftForge % 14 == 0){
+                m = listeCraftEnCoursForge.get(0);
+                listeCraftEnCoursForge.remove(0);
+            }
+        }
+
+        if (timerCraftFourneau > 0 || timerCraftForge > 0)
+            inventaire.put(m, inventaire.get(m) + 1);
     }
 }
