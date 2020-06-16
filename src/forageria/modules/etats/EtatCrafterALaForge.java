@@ -54,7 +54,7 @@ public class EtatCrafterALaForge extends Etat {
         int distanceMin = -1;
         Case forgeLaPlusProche = null ;
 
-        for(Coordonnee coo : this.getMemoire().getFourneaux()) {
+        for(Coordonnee coo : this.getMemoire().getForges()) {
             Case c = carte.getCase(coo) ;
             if (forgeLaPlusProche == null || dijkstra.getDistance(c) < distanceMin) {
                 distanceMin = dijkstra.getDistance(c);

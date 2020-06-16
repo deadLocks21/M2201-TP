@@ -272,6 +272,7 @@ public class ModuleMemoire extends Module  {
                 joueur.deplacer(action.getDirection()) ;
                 dureeValiditeCarte --;
                 break;
+
             case COLLECTE:
                 Case caseDestination = this.carte.getCase(this.getCaseJoueur().getCoordonnee().getVoisin(action.getDirection())) ;
                 if(!caseDestination.estVide() && caseDestination.getBatiment() == null) {
@@ -279,6 +280,7 @@ public class ModuleMemoire extends Module  {
                     caseDestination.setRessource(null) ;
                 }
                 break;
+
             case CONSTRUCTION:
                 int c = joueur.getCoordonnee().getColonne();
                 int l = joueur.getCoordonnee().getLigne();
@@ -306,6 +308,7 @@ public class ModuleMemoire extends Module  {
 
                 dureeValiditeCarte = 0;
                 break;
+
             case CRAFT:
                 switch (action.getMateriau()){
                     case CHARBON:
@@ -319,7 +322,7 @@ public class ModuleMemoire extends Module  {
                         inventaire.put(CHARBON, inventaire.get(CHARBON) - 1);
                         inventaire.put(OR, inventaire.get(OR) - 2);
                         break;
-                    case OR:
+                    case PIECE:
                         inventaire.put(LINGOTOR, inventaire.get(LINGOTOR) - 2);
                         break;
                 }
@@ -360,13 +363,11 @@ public class ModuleMemoire extends Module  {
      * Permet d'avancer le timer.
      */
     private void avancerTimerCraf() {
-        TypeMateriau m = null;
-
         if (timerCraftFourneau > 0){
             timerCraftFourneau --;
 
             if (timerCraftFourneau % 14 == 0){
-                m = listeCraftEnCoursFourneau.get(0);
+                TypeMateriau m = listeCraftEnCoursFourneau.get(0);
                 inventaire.put(m, inventaire.get(m) + 1);
                 listeCraftEnCoursFourneau.remove(0);
             }
@@ -376,7 +377,7 @@ public class ModuleMemoire extends Module  {
             timerCraftForge --;
 
             if (timerCraftForge % 14 == 0){
-                m = listeCraftEnCoursForge.get(0);
+                TypeMateriau m = listeCraftEnCoursForge.get(0);
                 inventaire.put(m, inventaire.get(m) + 1);
                 listeCraftEnCoursForge.remove(0);
             }

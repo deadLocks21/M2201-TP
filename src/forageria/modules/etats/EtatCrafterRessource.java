@@ -35,7 +35,6 @@ public class EtatCrafterRessource extends Etat {
     public Etat transition() {
         Etat nouvelEtat;
 
-        // TODO Ajouter les ressources à crafter.
         switch (materiau){
             case CHARBON:
                 ArrayList<TypeRessource> bois = new ArrayList<>();

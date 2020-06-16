@@ -56,8 +56,7 @@ public class EtatCrafterAuFourneau extends Etat {
 
         for(Coordonnee coo : this.getMemoire().getFourneaux()) {
             Case c = carte.getCase(coo) ;
-            if (fourneauLePlusProche == null || dijkstra.getDistance(c) <
-                    distanceMin) {
+            if (fourneauLePlusProche == null || dijkstra.getDistance(c) < distanceMin) {
                 distanceMin = dijkstra.getDistance(c) ;
                 fourneauLePlusProche = c ;
             }
