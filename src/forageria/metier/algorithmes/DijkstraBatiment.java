@@ -31,12 +31,8 @@ public class DijkstraBatiment extends Dijkstra {
     protected int coutMouvementVers(Case destination){
         int ret = super.getInfini();
 
-        if(destination.getType() != TypeCase.EAU && (destination.getBatiment() == null || typeBatiment == destination.getBatiment())){
-            if(destination.getRessource() != null)
-                ret = destination.getRessource().nombreCoupsPioche() + 1;
-            else
-                ret = 1;
-        }
+        if(destination.getType() != TypeCase.EAU && (destination.getBatiment() == null || typeBatiment == destination.getBatiment()))
+            ret = destination.getRessource() != null ? destination.getRessource().nombreCoupsPioche() + 1 : 1;
 
         return ret;
     }
